@@ -3,7 +3,7 @@ import os
 import xml.etree.ElementTree as et
 
 HEADERS = b'''<?xml version=\"1.0\" standalone=\"no\"?>
-<?xml-stylesheet href="wheel.css" type="text/css"?>
+<?xml-stylesheet href="../wheel.css" type="text/css"?>
 <!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\"
 \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\">
 '''
@@ -118,9 +118,12 @@ def generate_svg_wheel(packages, total, version):
 
     add_fraction(wheel, packages, total)
 
-    with open('wheel-{}.svg'.format(version), 'wb') as svg:
+    wheel_svg = os.path.join(version, 'wheel.svg')
+    wheel_png = os.path.join(version, 'wheel.png')
+    with open(wheel_svg, 'wb') as svg:
         svg.write(HEADERS)
         svg.write(et.tostring(wheel))
 
     # Install with: npm install svgexport -g
-    os.system('svgexport wheel-{v}.svg wheel-{v}.png 32:32'.format(v=version))
+    os.system('svgexport {svg} {png} 32:32'.format(
+        svg=wheel_svg, png=wheel_png))

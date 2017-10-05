@@ -1,4 +1,5 @@
 import argparse
+import os
 from svg_wheel import generate_svg_wheel
 from utils import (annotate_support, get_top_packages,
                    remove_irrelevant_packages, save_to_file)
@@ -7,7 +8,8 @@ from utils import (annotate_support, get_top_packages,
 def main(to_chart=360, version="2.6"):
     packages = remove_irrelevant_packages(get_top_packages(), to_chart)
     annotate_support(packages, version)
-    save_to_file(packages, 'results-{}.json'.format(version))
+    results_json = os.path.join(version, 'results.json')
+    save_to_file(packages, results_json)
     generate_svg_wheel(packages, to_chart, version)
 
 
