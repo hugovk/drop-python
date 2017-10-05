@@ -1,5 +1,5 @@
 *.pyc
 node_modules
-results.json
+results*.json
 wheel.png
 wheel.svg
