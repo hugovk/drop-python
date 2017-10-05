@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="utf-8">
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" href="favicon.ico">
+    <link rel="icon" href="wheel.png">
+    <style>
+        body{margin-top:15px;}
+        a.btn, h1{text-align: center;}
+        a.btn:last-child, canvas, body{margin-bottom:15px;}
+        a.btn {border-bottom-width: 0; border-radius: 0; width: 100%}
+        a.btn:first-child{border-top-left-radius: 5px; border-top-right-radius: 5px;}
+        a.btn:last-child{border-bottom-width: 1px; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;}
+        pre {text-align: left;}
+        footer{text-align: center;}
+    </style>
+    <title>Drop Python 3.3</title>
+</head>
+<body ng-controller="wheelCtrl">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+            <h1 id="drop">Drop Python 3.3</h1>
+                <object data="wheel.svg" type="image/svg+xml" width="380" height="380" class="center-block"></object>
+                <h2 id="what">What is this about?</h2>
+                <p>Python 3.3 reached the <a href="https://www.python.org/dev/peps/pep-0398/">end of its life on 29 September 2017</a>. It's about time to drop support for Python 3.3.</p>
+                <h3 id="reasons">Reasons for dropping</h3>
+                <ul>
+                    <li><a href="https://github.com/pypa/pip/issues/3796">pip 10 will deprecate Python 3.3 support, pip 11 won't support it</a></li>
+                    <li><a href="https://github.com/pypa/pip/issues/3796">Very little PyPI traffic (June 2016)</a></li>
+                </ul>
+                <h2 id="about-list">What is this list?</h2>
+                <p>This site shows the top 360 most-downloaded packages on <a href="https://pypi.python.org/pypi">PyPI</a> showing which have dropped support for Python 3.3.</p>
+                <ul>
+                    <li><span class="text-success">Green</span> packages have dropped Python 3.3,</li>
+                    <li><span class="text-muted">White</span> packages still support Python 3.3.</li>
+                </ul>
+                <p>Packages that are known to be deprecated are not included (for example distribute). If your package is incorrectly listed, please <a href="https://github.com/hugovk/drop-python/issues/">create a ticket</a>.</p>
+                <p>This is not an official website, just a nice visual way to measure progress. To see the authoritative guide on wheels and other aspects of python packaging, see the <a href="https://packaging.python.org">Python Packaging User Guide</a>.</p>
+                <h2 id="dropping-support">My package is white. What can I do?</h2>
+                    <h3 id="remove-classifier">Remove the classifier</h3>
+                    <p>Remove the Trove classifier from setup.py.</p>
+                        <pre>
+'Programming Language :: Python :: 3.3'</pre>
+
+                    <h3 id="stop-testing">Stop testing 3.3</h3>
+                    <p>Remove Python 3.3 from your CI. For example Travis CI's .travis.yml:</p>
+                        <pre>
+python:
+ - 3.3</pre>
+<p>And for example from Appveyor's appveyor.yml:
+                        <pre>
+C:\Python33
+C:\Python33-x64</pre>
+                    <p>And tox.ini:
+                        <pre>
+envlist=py33</pre>
+
+                    <h3 id="remove-code">Remove old code and documentation</h3>
+                    <p>Remove old Python 3.3-specific code and documentation. Common files to check:
+                        <ul>
+                            <li>.travis.yml
+                            <li>appveyor.yml
+                            <li>README.md
+                            <li>setup.py
+                            <li>tox.ini
+
+                        </ul>
+
+                    <p>Search your code for stuff like:
+                        <pre>
+if sys.version_info < (3, 4):
+    # Python 3.3 stuff
+
+if python_version == "3.3":
+    # Python 3.3 stuff
+
+ver = platform.python_version_tuple()
+    if float('{0}.{1}'.format(*ver[:2])) < 3.4:
+    # Python 3.3 stuff
+
+try:
+    # Python 3.3
+    import something
+except ImportError:
+    # Python 3.4+
+    import something_else
+
+// In C code
+#if PY_VERSION_HEX < 0x03040000
+-#endif
+</pre>
+
+                <p>Also search for <code>3.3</code> and <code>33</code>.
+
+                <p>If you test with coverage, look for code which was tested before removing 3.3 from your CI.
+
+                <p>Finally, consider dropping support for Python <a href="../2.6">2.6</a> and <a href="3.2">3.2</a>, which reached EOL on <a href="https://www.python.org/download/releases/2.6.9/">2013-10-29</a> and <a href="https://www.python.org/dev/peps/pep-0392/">2016-02-27</a> respectively.
+
+                <h2 id="bugs">Something's wrong with this page!</h2>
+                <p>Fantastic, a problem found is a problem fixed. Please <a href="https://github.com/hugovk/drop-python/issues/">create a ticket</a>!</p>
+                <p>You can also <a href="https://github.com/hugovk/drop-python/pulls/">submit a pull request</a>.</p>
+                <h2 id="thanks">Thanks</h2>
+                <p>Thanks to <a href="http://pythonwheels.com/">Python Wheels</a> and <a href="https://python3wos.appspot.com/">Python 3 Wall of Superpowers</a> for the concept and making their code open source.</p>
+            </div>
+            <div class="col-sm-6">
+                <div class="list">
+                    <span ng-hide="packages">pythonwheels.com requires JavaScript to be enabled to display the list of packages.</span>
+                    <a ng-repeat="package in packages" ng-href="https://pypi.python.org/pypi/{{ package.name }}" class="btn btn-{{ package.css_class }}" ng-attr-title="{{package.title}}">
+                        <span ng-bind="package.name"></span>
+                        <span ng-bind="package.icon"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <p>Code on <a href="https://github.com/hugovk/drop-python">GitHub</a>.</p>
+            <p>Last updated <span ng-bind="last_update"></span>. (Updated hourly.)</p>
+        </footer>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.10/angular.min.js"></script>
+    <script>
+        var app = angular.module('app', [])
+        .controller('wheelCtrl', function ($scope, $http) {
+            $http.get('results.json').then(function(res) {
+                $scope.last_update = res.data.last_update;
+                $scope.packages = res.data.data;
+            });
+        });
+    </script>
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-45641000-1']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+</body>
+</html>
