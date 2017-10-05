@@ -98,7 +98,7 @@ def add_fraction(wheel, packages, total):
     total_packages.text = '{0}'.format(total)
 
 
-def generate_svg_wheel(packages, total):
+def generate_svg_wheel(packages, total, version):
     wheel = et.Element(
         'svg',
         viewBox='0 0 {0} {0}'.format(2 * CENTER),
@@ -118,9 +118,9 @@ def generate_svg_wheel(packages, total):
 
     add_fraction(wheel, packages, total)
 
-    with open('wheel.svg', 'wb') as svg:
+    with open('wheel-{}.svg'.format(version), 'wb') as svg:
         svg.write(HEADERS)
         svg.write(et.tostring(wheel))
 
     # Install with: npm install svgexport -g
-    os.system('svgexport wheel.svg wheel.png 32:32')
+    os.system('svgexport wheel-{v}.svg wheel-{v}.png 32:32'.format(v=version))

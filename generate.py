@@ -8,7 +8,7 @@ def main(to_chart=360, version="2.6"):
     packages = remove_irrelevant_packages(get_top_packages(), to_chart)
     annotate_support(packages, version)
     save_to_file(packages, 'results-{}.json'.format(version))
-    generate_svg_wheel(packages, to_chart)
+    generate_svg_wheel(packages, to_chart, version)
 
 
 if __name__ == '__main__':
