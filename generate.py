@@ -1,5 +1,5 @@
 from svg_wheel import generate_svg_wheel
-from utils import (annotate_wheels, get_top_packages,
+from utils import (annotate_support, get_top_packages,
                    remove_irrelevant_packages, save_to_file)
 
 TO_CHART = 360
@@ -7,7 +7,7 @@ TO_CHART = 360
 
 def main():
     packages = remove_irrelevant_packages(get_top_packages(), TO_CHART)
-    annotate_wheels(packages)
+    annotate_support(packages)
     save_to_file(packages, 'results.json')
     generate_svg_wheel(packages, TO_CHART)
 

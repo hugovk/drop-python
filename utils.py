@@ -22,6 +22,8 @@ DEPRECATED_PACKAGES = set((
 
 SESSION = requests.Session()
 
+CLASSIFIER = 'Programming Language :: Python :: {}'
+
 
 def req_rpc(method, *args):
     payload = xmlrpclib.dumps(args, method)
@@ -43,34 +45,32 @@ def get_json_url(package_name):
     return BASE_URL + '/' + package_name + '/json'
 
 
-def annotate_wheels(packages):
-    print('Getting wheel data...')
+def annotate_support(packages, version='2.6'):
+    print('Getting support data...')
     num_packages = len(packages)
     for index, package in enumerate(packages):
         print(index + 1, num_packages, package['name'])
-        has_wheel = False
+        has_support = False
         url = get_json_url(package['name'])
         response = SESSION.get(url)
         if response.status_code != 200:
             print(' ! Skipping ' + package['name'])
             continue
         data = response.json()
-        for download in data['urls']:
-            if download['packagetype'] == 'bdist_wheel':
-                has_wheel = True
-        package['wheel'] = has_wheel
+        has_support = CLASSIFIER.format(version) in data['info']['classifiers']
+        package['dropped_support'] = not has_support
 
         # Display logic. I know, I'm sorry.
         package['value'] = 1
-        if has_wheel:
+        if not has_support:
             package['css_class'] = 'success'
             package['icon'] = u'\u2713'  # Check mark
-            package['title'] = 'This package provides a wheel.'
+            package['title'] = "This package doesn't support Python {}."
         else:
             package['css_class'] = 'default'
             package['icon'] = u'\u2717'  # Ballot X
-            package['title'] = ('This package has no wheel archives uploaded '
-                                '(yet!).')
+            package['title'] = 'This package supports Python {}.'
+    package['title'] = package['title'].format(version)
 
 
 def get_top_packages():
