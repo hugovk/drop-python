@@ -1,10 +1,12 @@
 help:
 	@echo "make help     -- print this help"
-	@echo "make generate -- regenerate the json"
+	@echo "make generate -- regenerate the files"
 	@echo "make update   -- upload the json and index.html to s3"
 
 generate:
-	python generate.py
+	python3 generate.py --version 2.6
+	python3 generate.py --version 3.2
+	python3 generate.py --version 3.3
 
 update:
 	/usr/local/bin/s3cmd put index.html s3://wheelpackages/index.html  --cf-invalidate \
