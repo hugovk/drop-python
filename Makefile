@@ -4,9 +4,16 @@ help:
 	@echo "make deploy   -- deploy the json and index.html to GitHub Pages"
 
 generate:
+	rm -rf build
+	mkdir build
 	python generate.py --version 2.6
 	python generate.py --version 3.2
 	python generate.py --version 3.3
+	cp -R 2.6 build/
+	cp -R 3.2 build/
+	cp -R 3.3 build/
+	cp index.html build/
+	cp wheel.css build/
 
 deploy:
 	# Adapted from https://zellwk.com/blog/deploy-static-site/
@@ -22,6 +29,9 @@ deploy:
 
 	# Switch branches
 	git checkout gh-pages
+
+	# Copy build files to root
+	cp -R build/ . && rm -rf build
 
 	# Add newly-generated files
 	git add .
