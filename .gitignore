@@ -1,10 +1,5 @@
 *.pyc
 node_modules
 
-# Generated files
-results*.json
-wheel*.png
-wheel*.svg
-
 # Build dir
 build
