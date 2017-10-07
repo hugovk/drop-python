@@ -36,11 +36,10 @@
                 <h2 id="what">What is this about?</h2>
                 <p>Old Python versions have reached end of life. It's about time to drop support for them.</p>
 
-                <h2 id="about-list">What is this list?</h2>
                 <p>This site shows the top 360 most-downloaded packages on <a href="https://pypi.python.org/pypi">PyPI</a> showing which have dropped support for a Python version.</p>
                 <ul>
                     <li><span class="text-success">Green</span> packages have dropped support,</li>
-                    <li><span class="text-muted">White</span> packages still still support it.</li>
+                    <li><span class="text-muted">White</span> packages still support it.</li>
                 </ul>
                 <p>Packages that are known to be deprecated are not included (for example distribute). If your package is incorrectly listed, please <a href="https://github.com/hugovk/drop-python/issues/">create a ticket</a>.</p>
                 <p>This is not an official website, just a nice visual way to measure progress. To see the authoritative guide on wheels and other aspects of python packaging, see the <a href="https://packaging.python.org">Python Packaging User Guide</a>.</p>
@@ -67,10 +66,19 @@
         </div>
         <footer>
             <p>Code on <a href="https://github.com/hugovk/drop-python">GitHub</a>.</p>
-
+            <p>Last updated <span ng-bind="last_update"></span>. (Updated hourly.)</p>
         </footer>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.10/angular.min.js"></script>
+    <script>
+        var app = angular.module('app', [])
+        .controller('wheelCtrl', function ($scope, $http) {
+            $http.get('3.2/results.json').then(function(res) {
+                $scope.last_update = res.data.last_update;
+                $scope.packages = res.data.data;
+            });
+        });
+    </script>
     <script type="text/javascript">
       var _gaq = _gaq || [];
       _gaq.push(['_setAccount', 'UA-45641000-1']);

@@ -1,5 +1,5 @@
 {
-  "name": "pythonwheels",
+  "name": "drop-python",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -12,12 +12,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/meshy/pythonwheels.git"
+    "url": "git+https://github.com/hugovk/drop-python.git"
   },
-  "author": "Charles Denton",
+  "author": "Charles Denton and Contributors",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/meshy/pythonwheels/issues"
+    "url": "https://github.com/hugovk/drop-python/issues"
   },
-  "homepage": "https://github.com/meshy/pythonwheels#readme"
+  "homepage": "https://github.com/hugovk/drop-python"
 }

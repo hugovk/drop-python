@@ -1,5 +1,5 @@
 {
-  "name": "pythonwheels",
+  "name": "drop-python",
   "version": "1.0.0",
   "dependencies": {
     "ansi-regex": {
