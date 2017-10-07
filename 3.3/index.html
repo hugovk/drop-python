@@ -3,6 +3,10 @@
 <head>
     <meta charset="utf-8">
     <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.0/gh-fork-ribbon.min.css" />
+    <!--[if lt IE 9]>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.0/gh-fork-ribbon.ie.min.css" />
+    <![endif]-->
     <link rel="icon" href="favicon.ico">
     <link rel="icon" href="wheel.png">
     <style>
@@ -14,6 +18,13 @@
         a.btn:last-child{border-bottom-width: 1px; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;}
         pre {text-align: left;}
         footer{text-align: center;}
+        .github-fork-ribbon:before {
+            background-color: #090;
+        }
+        .github-fork-ribbon.no-box-sizing:before,
+        .github-fork-ribbon.no-box-sizing:after {
+            box-sizing: content-box;
+        }
     </style>
     <title>Drop Python 3.3</title>
 </head>
@@ -117,6 +128,7 @@ except ImportError:
         <footer>
             <p>Code on <a href="https://github.com/hugovk/drop-python">GitHub</a>.</p>
             <p>Last updated <span ng-bind="last_update"></span>. (Updated hourly.)</p>
+            <a class="github-fork-ribbon no-box-sizing" href="https://github.com/hugovk/drop-python" target="_blank" title="Fork me on GitHub">Fork me on GitHub</a>
         </footer>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.10/angular.min.js"></script>
