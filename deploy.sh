@@ -13,7 +13,7 @@ git checkout gh-pages # Step 3
 
 git rm -rf . # Step 4
 
-git checkout master -- .gitignore # Step 5
+git checkout gh-pages -- .gitignore # Step 5
 
 cp -R build/* . && rm -rf build # Step 6
 
