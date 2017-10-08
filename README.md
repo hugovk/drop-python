@@ -7,8 +7,7 @@ It's about time to drop support for old Pythons.
 ## How to use
 
 ```bash
-$ python generate.py -h
-usage: generate.py [-h] [-n NUMBER] [-v VERSION]
+usage: generate.py [-h] [-n NUMBER] [-v VERSION [VERSION ...]]
 
 Generate
 
@@ -16,15 +15,18 @@ optional arguments:
   -h, --help            show this help message and exit
   -n NUMBER, --number NUMBER
                         Number of packages to chart (default: 360)
-  -v VERSION, --version VERSION
-                        Python version to check (default: 2.6)
+  -v VERSION [VERSION ...], --version VERSION [VERSION ...]
+                        Python version or versions to check (default: ['2.6',
+                        '3.2', '3.3'])
 ```
 
 For example:
 ```bash
 $ python generate.py
 
-$ python generate.py -n 3.2 -n 100
+$ python generate.py -v 3.2 -n 100
+
+$ python generate.py -v 2.6 3.2 3.3
 ```
 See also build.sh.
 

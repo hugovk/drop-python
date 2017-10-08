@@ -45,32 +45,39 @@ def get_json_url(package_name):
     return BASE_URL + '/' + package_name + '/json'
 
 
-def annotate_support(packages, version='2.6'):
+def annotate_support(packages, versions=['2.6']):
     print('Getting support data...')
     num_packages = len(packages)
     for index, package in enumerate(packages):
         print(index + 1, num_packages, package['name'])
-        has_support = False
+        has_support = dict()
         url = get_json_url(package['name'])
         response = SESSION.get(url)
         if response.status_code != 200:
             print(' ! Skipping ' + package['name'])
             continue
         data = response.json()
-        has_support = CLASSIFIER.format(version) in data['info']['classifiers']
-        package['dropped_support'] = not has_support
 
-        # Display logic. I know, I'm sorry.
-        package['value'] = 1
-        if not has_support:
-            package['css_class'] = 'success'
-            package['icon'] = u'\u2713'  # Check mark
-            package['title'] = "This package doesn't support Python {}."
-        else:
-            package['css_class'] = 'default'
-            package['icon'] = u'\u2717'  # Ballot X
-            package['title'] = 'This package supports Python {}.'
-    package['title'] = package['title'].format(version)
+        for version in versions:
+
+            # Init
+            package[version] = dict()
+
+            classifier = CLASSIFIER.format(version)
+            has_support[version] = classifier in data['info']['classifiers']
+            package[version]['dropped_support'] = not has_support[version]
+
+            # Display logic. I know, I'm sorry.
+            package['value'] = 1
+            if not has_support[version]:
+                package[version]['css_class'] = 'success'
+                package[version]['icon'] = u'\u2713'  # Check mark
+                title = "This package doesn't support Python {}."
+            else:
+                package[version]['css_class'] = 'default'
+                package[version]['icon'] = u'\u2717'  # Ballot X
+                title = 'This package supports Python {}.'
+            package[version]['title'] = title.format(version)
 
 
 def get_top_packages():
