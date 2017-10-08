@@ -3,6 +3,9 @@
 # Prevents script from running if there are any errors
 set -e
 
+# Update
+git pull origin master
+
 # Generate the files
 python generate.py --version 2.6
 python generate.py --version 3.2
