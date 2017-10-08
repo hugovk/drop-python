@@ -14,6 +14,9 @@ install:
  - npm install svgexport -g
 
 script:
+ # Unit tests
+ - python test_utils.py
+
  # Static analysis
  - pyflakes .
  - pep8 --statistics --count .

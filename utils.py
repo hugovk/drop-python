@@ -1,4 +1,4 @@
-from __future__ import print_function
+from __future__ import print_function, unicode_literals
 import datetime
 import json
 try:
@@ -45,12 +45,32 @@ def get_json_url(package_name):
     return BASE_URL + '/' + package_name + '/json'
 
 
+def supports(classifiers, version):
+    """Do these classifiers support this Python version?"""
+    desired_classifier = CLASSIFIER.format(version)
+
+    # Explicit support
+    if desired_classifier in classifiers:
+        return True
+
+    # If classifiers are not explicit, we want to assume support.
+    # Only report False when at least one major.minor version is explicitly
+    # supported (but not the desired one).
+    for classifier in classifiers:
+        if CLASSIFIER.format("2.") in classifier:
+            return False
+        if CLASSIFIER.format("3.") in classifier:
+            return False
+
+    # Otherwise assume support
+    return True
+
+
 def annotate_support(packages, versions=['2.6']):
     print('Getting support data...')
     num_packages = len(packages)
     for index, package in enumerate(packages):
         print(index + 1, num_packages, package['name'])
-        has_support = dict()
         url = get_json_url(package['name'])
         response = SESSION.get(url)
         if response.status_code != 200:
@@ -63,13 +83,12 @@ def annotate_support(packages, versions=['2.6']):
             # Init
             package[version] = dict()
 
-            classifier = CLASSIFIER.format(version)
-            has_support[version] = classifier in data['info']['classifiers']
-            package[version]['dropped_support'] = not has_support[version]
+            has_support = supports(data['info']['classifiers'], version)
+            package[version]['dropped_support'] = not has_support
 
             # Display logic. I know, I'm sorry.
             package['value'] = 1
-            if not has_support[version]:
+            if not has_support:
                 package[version]['css_class'] = 'success'
                 package[version]['icon'] = u'\u2713'  # Check mark
                 title = "This package doesn't support Python {}."
