@@ -28,7 +28,7 @@
     </style>
     <title>Drop Python 3.3</title>
 </head>
-<body ng-controller="wheelCtrl">
+<body ng-controller="wheelCtrl" ng-init="version='3.3'">
     <div class="container">
         <div class="row">
             <div class="col-sm-6">
@@ -118,15 +118,14 @@ except ImportError:
             <div class="col-sm-6">
                 <div class="list">
                     <span ng-hide="packages">drop-python requires JavaScript to be enabled to display the list of packages.</span>
-                    <a ng-repeat="package in packages" ng-href="https://pypi.python.org/pypi/{{ package.name }}" class="btn btn-{{ package.css_class }}" ng-attr-title="{{package.title}}">
+                    <a ng-repeat="package in packages" ng-href="https://pypi.python.org/pypi/{{ package.name }}" class="btn btn-{{ package[version].css_class }}" ng-attr-title="{{package[version].title}}">
                         <span ng-bind="package.name"></span>
-                        <span ng-bind="package.icon"></span>
+                        <span ng-bind="package[version].icon"></span>
                     </a>
                 </div>
             </div>
         </div>
         <footer>
-            <p>Code on <a href="https://github.com/hugovk/drop-python">GitHub</a>.</p>
             <p>Last updated <span ng-bind="last_update"></span>. (Updated hourly.)</p>
             <a class="github-fork-ribbon no-box-sizing" href="https://github.com/hugovk/drop-python" target="_blank" title="Fork me on GitHub">Fork me on GitHub</a>
         </footer>
@@ -135,7 +134,7 @@ except ImportError:
     <script>
         var app = angular.module('app', [])
         .controller('wheelCtrl', function ($scope, $http) {
-            $http.get('results.json').then(function(res) {
+            $http.get('../results.json').then(function(res) {
                 $scope.last_update = res.data.last_update;
                 $scope.packages = res.data.data;
             });
