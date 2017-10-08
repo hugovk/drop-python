@@ -62,7 +62,7 @@ def angles(index, total):
     return (start - TAU / 4, stop - TAU / 4)
 
 
-def add_fraction(wheel, packages, total):
+def add_fraction(wheel, packages, total, version):
     text_attributes = {
         'text-anchor': 'middle',
         'dominant-baseline': 'central',
@@ -72,7 +72,8 @@ def add_fraction(wheel, packages, total):
     }
 
     # Packages with some sort of wheel
-    wheel_packages = sum(package['dropped_support'] for package in packages)
+    wheel_packages = sum(
+        package[version]['dropped_support'] for package in packages)
 
     packages_with_wheels = et.SubElement(
         wheel, 'text',
@@ -98,32 +99,36 @@ def add_fraction(wheel, packages, total):
     total_packages.text = '{0}'.format(total)
 
 
-def generate_svg_wheel(packages, total, version):
-    wheel = et.Element(
-        'svg',
-        viewBox='0 0 {0} {0}'.format(2 * CENTER),
-        version='1.1',
-        xmlns='http://www.w3.org/2000/svg',
-    )
+def generate_svg_wheel(packages, total, versions):
+    for version in versions:
 
-    for index, result in enumerate(packages):
-        start, stop = angles(index, total)
-        sector = add_annular_sector(
-            wheel,
-            start=start, stop=stop,
-            style_class=result['css_class'],
+        wheel = et.Element(
+            'svg',
+            viewBox='0 0 {0} {0}'.format(2 * CENTER),
+            version='1.1',
+            xmlns='http://www.w3.org/2000/svg',
         )
-        title = et.SubElement(sector, 'title')
-        title.text = u'{0} {1}'.format(result['name'], result['icon'])
 
-    add_fraction(wheel, packages, total)
+        for index, result in enumerate(packages):
 
-    wheel_svg = os.path.join(version, 'wheel.svg')
-    wheel_png = os.path.join(version, 'wheel.png')
-    with open(wheel_svg, 'wb') as svg:
-        svg.write(HEADERS)
-        svg.write(et.tostring(wheel))
+            start, stop = angles(index, total)
+            sector = add_annular_sector(
+                wheel,
+                start=start, stop=stop,
+                style_class=result[version]['css_class'],
+            )
+            title = et.SubElement(sector, 'title')
+            title.text = u'{0} {1}'.format(
+                result['name'], result[version]['icon'])
 
-    # Install with: npm install svgexport -g
-    os.system('svgexport {svg} {png} 32:32'.format(
-        svg=wheel_svg, png=wheel_png))
+        add_fraction(wheel, packages, total, version)
+
+        wheel_svg = os.path.join(version, 'wheel.svg')
+        wheel_png = os.path.join(version, 'wheel.png')
+        with open(wheel_svg, 'wb') as svg:
+            svg.write(HEADERS)
+            svg.write(et.tostring(wheel))
+
+        # Install with: npm install svgexport -g
+        os.system('svgexport {svg} {png} 32:32'.format(
+            svg=wheel_svg, png=wheel_png))
