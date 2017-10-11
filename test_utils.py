@@ -29,7 +29,7 @@ class TestIt(unittest.TestCase):
         has_support = utils.supports(classifiers, "2.6")
 
         # Assert
-        self.assertTrue(has_support)
+        self.assertEqual(has_support, "yes")
 
     def test_supports_no_support_but_others_are(self):
         # Arrange
@@ -47,7 +47,7 @@ class TestIt(unittest.TestCase):
         has_support = utils.supports(classifiers, "2.6")
 
         # Assert
-        self.assertFalse(has_support)
+        self.assertEqual(has_support, "no")
 
     def test_supports_no_support_but_other_2x_are(self):
         # Arrange
@@ -61,7 +61,7 @@ class TestIt(unittest.TestCase):
         has_support = utils.supports(classifiers, "2.6")
 
         # Assert
-        self.assertFalse(has_support)
+        self.assertEqual(has_support, "no")
 
     def test_supports_no_support_but_other_3x_are(self):
         # Arrange
@@ -77,7 +77,7 @@ class TestIt(unittest.TestCase):
         has_support = utils.supports(classifiers, "2.6")
 
         # Assert
-        self.assertFalse(has_support)
+        self.assertEqual(has_support, "no")
 
     def test_supports_no_support_or_any_major_minor(self):
         # Arrange
@@ -92,7 +92,7 @@ class TestIt(unittest.TestCase):
         has_support = utils.supports(classifiers, "2.6")
 
         # Assert
-        self.assertTrue(has_support)
+        self.assertEqual(has_support, "maybe")
 
     def test_supports_no_support_for_empty(self):
         # Arrange
@@ -104,7 +104,7 @@ class TestIt(unittest.TestCase):
         has_support = utils.supports(classifiers, "2.6")
 
         # Assert
-        self.assertTrue(has_support)
+        self.assertEqual(has_support, "maybe")
 
 
 if __name__ == '__main__':
