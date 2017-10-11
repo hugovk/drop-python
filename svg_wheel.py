@@ -73,7 +73,8 @@ def add_fraction(wheel, packages, total, version):
 
     # Packages with some sort of wheel
     wheel_packages = sum(
-        package[version]['dropped_support'] for package in packages)
+        1 if package[version]['dropped_support'] == "yes" else
+        0 for package in packages)
 
     packages_with_wheels = et.SubElement(
         wheel, 'text',

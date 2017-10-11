@@ -51,19 +51,19 @@ def supports(classifiers, version):
 
     # Explicit support
     if desired_classifier in classifiers:
-        return True
+        return "yes"
 
-    # If classifiers are not explicit, we want to assume support.
-    # Only report False when at least one major.minor version is explicitly
+    # Check if classifiers are explicit.
+    # Only report "no" when at least one major.minor version is explicitly
     # supported (but not the desired one).
     for classifier in classifiers:
         if CLASSIFIER.format("2.") in classifier:
-            return False
+            return "no"
         if CLASSIFIER.format("3.") in classifier:
-            return False
+            return "no"
 
-    # Otherwise assume support
-    return True
+    # Otherwise?
+    return "maybe"
 
 
 def annotate_support(packages, versions=['2.6']):
@@ -84,17 +84,26 @@ def annotate_support(packages, versions=['2.6']):
             package[version] = dict()
 
             has_support = supports(data['info']['classifiers'], version)
-            package[version]['dropped_support'] = not has_support
+            if has_support == "yes":
+                package[version]['dropped_support'] = "no"
+            if has_support == "no":
+                package[version]['dropped_support'] = "yes"
+            if has_support == "maybe":
+                package[version]['dropped_support'] = "maybe"
 
             # Display logic. I know, I'm sorry.
             package['value'] = 1
-            if not has_support:
+            if has_support == "no":
                 package[version]['css_class'] = 'success'
                 package[version]['icon'] = u'\u2713'  # Check mark
                 title = "This package doesn't support Python {}."
-            else:
+            elif has_support == "yes":
                 package[version]['css_class'] = 'default'
                 package[version]['icon'] = u'\u2717'  # Ballot X
+                title = 'This package supports Python {}.'
+            elif has_support == "maybe":
+                package[version]['css_class'] = 'default'
+                package[version]['icon'] = '?'  # Question mark
                 title = 'This package supports Python {}.'
             package[version]['title'] = title.format(version)
 
