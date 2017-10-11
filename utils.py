@@ -101,10 +101,10 @@ def annotate_support(packages, versions=['2.6']):
                 package[version]['css_class'] = 'default'
                 package[version]['icon'] = u'\u2717'  # Ballot X
                 title = 'This package supports Python {}.'
-            elif has_support == "maybe":
+            else:  # "maybe"
                 package[version]['css_class'] = 'default'
-                package[version]['icon'] = '?'  # Question mark
-                title = 'This package supports Python {}.'
+                package[version]['icon'] = '?'
+                title = 'This package may support Python {}.'
             package[version]['title'] = title.format(version)
 
 
