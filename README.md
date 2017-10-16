@@ -50,4 +50,4 @@ Run build.sh to generated the files from the master branch, and copy them to a b
 
 ## Thanks
 
-This is derivative work from [Python Wheels](pythonwheels.com), a site that tracks progress in the new Python package distribution standard called [Wheels](https://pypi.python.org/pypi/wheel). Thanks also to [Python 3 Wall of Superpowers](https://python3wos.appspot.com/) for the concept and making their code open source, and see also [Python 3 Readiness](py3readiness.org).
+This is derivative work from [Python Wheels](https://pythonwheels.com), a site that tracks progress in the new Python package distribution standard called [Wheels](https://pypi.python.org/pypi/wheel). Thanks also to [Python 3 Wall of Superpowers](https://python3wos.appspot.com/) for the concept and making their code open source, and see also [Python 3 Readiness](http://py3readiness.org).
