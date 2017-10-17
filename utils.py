@@ -1,13 +1,6 @@
 from __future__ import print_function, unicode_literals
 import datetime
 import json
-try:
-    # Python 2.7
-    import xmlrpclib
-except ImportError:
-    # Python 3
-    import xmlrpc.client as xmlrpclib
-
 import pytz
 import requests
 
@@ -23,22 +16,6 @@ DEPRECATED_PACKAGES = set((
 SESSION = requests.Session()
 
 CLASSIFIER = 'Programming Language :: Python :: {}'
-
-
-def req_rpc(method, *args):
-    payload = xmlrpclib.dumps(args, method)
-
-    response = SESSION.post(
-        BASE_URL,
-        data=payload,
-        headers={'Content-Type': 'text/xml'},
-    )
-    if response.status_code == 200:
-        result = xmlrpclib.loads(response.content)[0][0]
-        return result
-    else:
-        # Some error occurred
-        pass
 
 
 def get_json_url(package_name):
@@ -110,8 +87,16 @@ def annotate_support(packages, versions=['2.6']):
 
 def get_top_packages():
     print('Getting packages...')
-    packages = req_rpc('top_packages')
-    return [{'name': n, 'downloads': d} for n, d in packages]
+
+    with open('365.json') as data_file:
+        packages = json.load(data_file)
+
+    # Rename keys
+    for package in packages:
+        package['downloads'] = package.pop('download_count')
+        package['name'] = package.pop('project')
+
+    return packages
 
 
 def not_deprecated(package):
