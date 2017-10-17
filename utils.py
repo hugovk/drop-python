@@ -53,6 +53,8 @@ def supports(classifiers, version):
     if desired_classifier in classifiers:
         return "yes"
 
+    # The explicit one has not been found
+
     # Check if classifiers are explicit.
     # Only report "no" when at least one major.minor version is explicitly
     # supported (but not the desired one).
@@ -60,6 +62,20 @@ def supports(classifiers, version):
         if CLASSIFIER.format("2.") in classifier:
             return "no"
         if CLASSIFIER.format("3.") in classifier:
+            return "no"
+
+    if version.startswith("2."):
+        if CLASSIFIER.format("2 :: Only") in classifiers:
+            return "maybe"
+
+    if version.startswith("3."):
+        if CLASSIFIER.format("3 :: Only") in classifiers:
+            return "maybe"
+
+    for classifier in classifiers:
+        if " :: Only" in classifier:
+            # We know it's the wrong version, because
+            # we've already checked for the right version.
             return "no"
 
     # Otherwise?

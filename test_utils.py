@@ -106,6 +106,74 @@ class TestIt(unittest.TestCase):
         # Assert
         self.assertEqual(has_support, "maybe")
 
+    def test_supports_2_only_only(self):
+        # Arrange
+        classifiers = [
+            "Programming Language :: Python :: 2 :: Only",
+        ]
+
+        # Act
+        has_support_26 = utils.supports(classifiers, "2.6")
+        has_support_34 = utils.supports(classifiers, "3.4")
+
+        # Assert
+        self.assertEqual(has_support_26, "maybe")
+        self.assertEqual(has_support_34, "no")
+
+    def test_supports_2_only_plus_others(self):
+        # Arrange
+        classifiers = [
+            "Programming Language :: Python",
+            "Programming Language :: Python :: 2",
+            "Programming Language :: Python :: 2.7",
+            "Programming Language :: Python :: 2 :: Only",
+        ]
+
+        # Act
+        has_support_26 = utils.supports(classifiers, "2.6")
+        has_support_27 = utils.supports(classifiers, "2.7")
+        has_support_34 = utils.supports(classifiers, "3.4")
+
+        # Assert
+        self.assertEqual(has_support_26, "no")
+        self.assertEqual(has_support_27, "yes")
+        self.assertEqual(has_support_34, "no")
+
+    def test_supports_3_only_only(self):
+        # Arrange
+        classifiers = [
+            "Programming Language :: Python :: 3 :: Only",
+        ]
+
+        # Act
+        has_support_26 = utils.supports(classifiers, "2.6")
+        has_support_34 = utils.supports(classifiers, "3.4")
+
+        # Assert
+        self.assertEqual(has_support_26, "no")
+        self.assertEqual(has_support_34, "maybe")
+
+    def test_supports_3_only_plus_others(self):
+        # Arrange
+        classifiers = [
+            "Programming Language :: Python",
+            "Programming Language :: Python :: 3",
+            "Programming Language :: Python :: 3.4",
+            "Programming Language :: Python :: 3.5",
+            "Programming Language :: Python :: 3.6",
+            "Programming Language :: Python :: 3 :: Only",
+        ]
+
+        # Act
+        has_support_26 = utils.supports(classifiers, "2.6")
+        has_support_32 = utils.supports(classifiers, "3.2")
+        has_support_34 = utils.supports(classifiers, "3.4")
+
+        # Assert
+        self.assertEqual(has_support_26, "no")
+        self.assertEqual(has_support_32, "no")
+        self.assertEqual(has_support_34, "yes")
+
 
 if __name__ == '__main__':
     unittest.main()
