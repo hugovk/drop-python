@@ -79,7 +79,6 @@ envlist=py26</pre>
                             <li>README.md
                             <li>setup.py
                             <li>tox.ini
-
                         </ul>
 
                     <p>For example, no need to install or import unittest2 any more. This:</p>
@@ -91,6 +90,7 @@ try:
                     <p>&hellip;can be replaced with:
                         <pre>
 import unittest</pre>
+
                     <p>Search your code for stuff like:
                         <pre>
 if sys.version_info < (2, 7):
@@ -120,6 +120,27 @@ except ImportError:
                 <p>If you test with coverage, look for code which was tested before removing 2.6 from your CI.
 
                 <p>Finally, consider dropping support for Python <a href="../3.2">3.2</a> and 3.3, which reached EOL on <a href="https://www.python.org/dev/peps/pep-0392/">2016-02-27</a> and <a href="https://www.python.org/dev/peps/pep-0398/">2017-09-29</a> respectively.
+
+                    <h3 id="new-features">Use new Python features</h3>
+                    <p>See <a href="https://docs.python.org/3/whatsnew/2.7.html">what's new</a>. For example:
+
+                        <ul>
+                            <li><p>Use <a href="https://renzo.lucioni.xyz/pythons-set-literals/">set literals</a>:</p>
+                                <pre>
+set([1, 2, 3])  # This can be replaced...
+{1, 2, 3}       # ... with this</pre>
+
+                            <li><p>Update <a href="https://pyformat.info/">string formatters</a>:</p>
+                                <pre>
+# These can be replaced...
+'%s %s' % ('one', 'two')
+'{1} {2}'.format('one', 'two')
+
+# ... with this
+'{} {}'.format('one', 'two')</pre>
+
+                            <li>Use <code>OrderedDict</code> and <code>Counter</code> from <code>collections</code>
+                        </ul>
 
                 <h2 id="bugs">Something's wrong with this page!</h2>
                 <p>Fantastic, a problem found is a problem fixed. Please <a href="https://github.com/hugovk/drop-python/issues/">create a ticket</a>!</p>
