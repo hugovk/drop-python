@@ -7,11 +7,11 @@ import requests
 
 BASE_URL = 'https://pypi.python.org/pypi'
 
-DEPRECATED_PACKAGES = set((
+DEPRECATED_PACKAGES = {
     'distribute',
     'django-social-auth',
     'BeautifulSoup'
-))
+}
 
 SESSION = requests.Session()
 
@@ -58,7 +58,7 @@ def annotate_support(packages, versions=['2.6']):
         for version in versions:
 
             # Init
-            package[version] = dict()
+            package[version] = {}
 
             has_support = supports(data['info']['classifiers'], version)
             if has_support == "yes":
