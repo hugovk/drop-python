@@ -84,7 +84,8 @@ def add_fraction(wheel, packages, total, version):
     packages_with_wheels.text = '{0}'.format(wheel_packages)
 
     title = et.SubElement(packages_with_wheels, 'title')
-    title.text = '{:.0%}'.format(wheel_packages/total)
+    percentage = '{:.0%}'.format(wheel_packages/float(total))
+    title.text = percentage
 
     # Dividing line
     et.SubElement(
@@ -103,7 +104,7 @@ def add_fraction(wheel, packages, total, version):
     total_packages.text = '{0}'.format(total)
 
     title = et.SubElement(total_packages, 'title')
-    title.text = '{:.0%}'.format(wheel_packages/float(total))
+    title.text = percentage
 
 
 def generate_svg_wheel(packages, total, versions):
