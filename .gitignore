@@ -8,3 +8,6 @@ wheel*.svg
 
 # Build dir
 build
+
+# IDE
+.idea
