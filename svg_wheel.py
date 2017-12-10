@@ -133,6 +133,7 @@ def generate_svg_wheel(packages, total, versions):
 
         wheel_svg = os.path.join(version, 'wheel.svg')
         wheel_png = os.path.join(version, 'wheel.png')
+        wheel_og_png = os.path.join(version, 'wheel-og.png')
         with open(wheel_svg, 'wb') as svg:
             svg.write(HEADERS)
             svg.write(et.tostring(wheel))
@@ -140,3 +141,5 @@ def generate_svg_wheel(packages, total, versions):
         # Install with: npm install svgexport -g
         os.system('svgexport {svg} {png} 32:32'.format(
             svg=wheel_svg, png=wheel_png))
+        os.system('svgexport {svg} {png} 630:630'.format(
+            svg=wheel_svg, png=wheel_og_png))
