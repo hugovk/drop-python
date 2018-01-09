@@ -88,7 +88,7 @@ def annotate_support(packages, versions=['2.6']):
 def get_top_packages():
     print('Getting packages...')
 
-    with open('365.json') as data_file:
+    with open('top-pypi-packages.json') as data_file:
         packages = json.load(data_file)
 
     # Rename keys

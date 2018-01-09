@@ -3,6 +3,7 @@ node_modules
 
 # Generated files
 results*.json
+top-pypi-packages.json
 wheel*.png
 wheel*.svg
 
