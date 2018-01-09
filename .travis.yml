@@ -9,7 +9,7 @@ python:
 sudo: false
 
 install:
- - pip install pep8 pyflakes
+ - pip install pycodestyle pyflakes
  - pip install -r requirements.txt
  - npm install svgexport -g
  - wget https://hugovk.github.io/top-pypi-packages/top-pypi-packages.json -O top-pypi-packages.json
@@ -20,7 +20,7 @@ script:
 
  # Static analysis
  - pyflakes .
- - pep8 --statistics --count .
+ - pycodestyle --statistics --count .
 
  # Test run
  - python generate.py
