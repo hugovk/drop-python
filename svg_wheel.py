@@ -24,6 +24,11 @@ CENTER = PADDING + RADIUS
 TAU = 2 * math.pi
 
 
+def create_dir(dir):
+    if not os.path.isdir(dir):
+        os.mkdir(dir)
+
+
 def annular_sector_path(start, stop):
     inner_radius = RADIUS // 2
     outer_radius = RADIUS
@@ -131,6 +136,7 @@ def generate_svg_wheel(packages, total, versions):
 
         add_fraction(wheel, packages, total, version)
 
+        create_dir(version)
         wheel_svg = os.path.join(version, 'wheel.svg')
         wheel_png = os.path.join(version, 'wheel.png')
         wheel_og_png = os.path.join(version, 'wheel-og.png')
