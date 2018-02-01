@@ -34,11 +34,11 @@ See also build.sh.
 
 In another terminal:
 ```bash
-$ python -m SimpleHTTPServer 8000
+$ python3 -m http.server 8000
 
 # Or:
 
-$ python3 -m http.server 8000
+$ python2 -m SimpleHTTPServer 8000
 
 ```
 
