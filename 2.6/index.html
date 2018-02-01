@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" ng-app="app">
+<html lang="en" ng-app="app" ng-controller="wheelCtrl" ng-init="init()">
 <head>
     <meta charset="utf-8">
     <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" rel="stylesheet">
@@ -26,23 +26,23 @@
             box-sizing: content-box;
         }
     </style>
-    <title>Drop Python 2.6</title>
-    <meta property="og:title" content="Drop Python 2.6">
+    <title>Drop Python {{version}}</title>
+    <meta property="og:title" content="Drop Python {{version}}">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://hugovk.github.io/drop-python/2.6/wheel-og.png">
+    <meta property="og:image" content="https://hugovk.github.io/drop-python/{{version}}/wheel-og.png">
     <meta property="og:image:width" content="630">
     <meta property="og:image:height" content="630">
-    <meta property="og:url" content="https://hugovk.github.io/drop-python/2.6/">
-    <meta property="og:description" content="Python 2.6 reached the end of its life on 29 October 2013. It's about time to drop support for Python 2.6.">
+    <meta property="og:url" content="https://hugovk.github.io/drop-python/{{version}}/">
+    <meta property="og:description" content="Python {{version}} reached the end of its life on {{eol}}. It's about time to drop support for Python {{version}}.">
 </head>
-<body ng-controller="wheelCtrl" ng-init="version='2.6'">
+<body>
     <div class="container">
         <div class="row">
             <div class="col-sm-6">
-            <h1 id="drop"><a href="..">Drop Python</a> 2.6</h1>
+            <h1 id="drop"><a href="..">Drop Python</a> {{version}}</h1>
                 <object data="wheel.svg" type="image/svg+xml" width="380" height="380" class="center-block"></object>
                 <h2 id="what">What is this about?</h2>
-                <p>Python 2.6 reached the <a href="https://www.python.org/download/releases/2.6.9/">end of its life on 29 October 2013</a>. It's about time to drop support for Python 2.6.</p>
+                <p>Python {{version}} reached the <a href="https://en.wikipedia.org/wiki/CPython#Version_history">end of its life on {{eol}}</a>. It's about time to drop support for Python {{version}}.</p>
                 <h3 id="reasons">Reasons for dropping</h3>
                 <ul>
                     <li><a href="https://snarky.ca/stop-using-python-2-6/">Stop using Python 2.6 please</a></li>
@@ -52,10 +52,10 @@
                     <li><a href="https://github.com/pypa/pip/issues/3796">Not much PyPI traffic (June 2016)</a></li>
                 </ul>
                 <h2 id="about-list">What is this list?</h2>
-                <p>This site shows the top 360 most-downloaded packages on <a href="https://pypi.python.org/pypi">PyPI</a> showing which have dropped support for Python 2.6.</p>
+                <p>This site shows the top 360 most-downloaded packages on <a href="https://pypi.python.org/pypi">PyPI</a> showing which have dropped support for Python {{version}}.</p>
                 <ul>
-                    <li><span class="text-success">Green</span> packages have dropped Python 2.6,</li>
-                    <li><span class="text-muted">White</span> packages may still support Python 2.6.</li>
+                    <li><span class="text-success">Green</span> packages have dropped Python {{version}},</li>
+                    <li><span class="text-muted">White</span> packages may still support Python {{version}}.</li>
                 </ul>
                 <p>Packages that are known to be deprecated are not included (for example distribute). If your package is incorrectly listed, please <a href="https://github.com/hugovk/drop-python/issues/">create a ticket</a>.</p>
                 <p>This is not an official website, just a nice visual way to measure progress. To see the authoritative guide on wheels and other aspects of python packaging, see the <a href="https://packaging.python.org">Python Packaging User Guide</a>.</p>
@@ -63,23 +63,23 @@
                     <h3 id="remove-classifier">Remove the classifier</h3>
                     <p>Remove the Trove classifier from setup.py.</p>
                         <pre>
-'Programming Language :: Python :: 2.6'</pre>
+'Programming Language :: Python :: {{version}}'</pre>
 
-                    <h3 id="stop-testing">Stop testing 2.6</h3>
-                    <p>Remove Python 2.6 from your CI. For example Travis CI's .travis.yml:</p>
+                    <h3 id="stop-testing">Stop testing {{version}}</h3>
+                    <p>Remove Python {{version}} from your CI. For example Travis CI's .travis.yml:</p>
                         <pre>
 python:
- - 2.6</pre>
+ - {{version}}</pre>
 <p>And for example from Appveyor's appveyor.yml:
                         <pre>
-C:\Python26
-C:\Python26-x64</pre>
+C:\Python{{major}}{{minor}}
+C:\Python{{major}}{{minor}}-x64</pre>
                     <p>And tox.ini:
                         <pre>
-envlist=py26</pre>
+envlist=py{{major}}{{minor}}</pre>
 
                     <h3 id="remove-code">Remove old code and documentation</h3>
-                    <p>Remove old Python 2.6-specific code and documentation. Common files to check:
+                    <p>Remove old Python {{version}}-specific code and documentation. Common files to check:
                         <ul>
                             <li>.travis.yml
                             <li>appveyor.yml
@@ -100,33 +100,33 @@ import unittest</pre>
 
                     <p>Search your code for stuff like:
                         <pre>
-if sys.version_info < (2, 7):
-    # Python 2.6 stuff
+if sys.version_info < ({{major}}, {{next_minor}}):
+    # Python {{version}} stuff
 
-if platform.python_version == "2.6":
-    # Python 2.6 stuff
+if platform.python_version == "{{version}}":
+    # Python {{version}} stuff
 
 ver = platform.python_version_tuple()
-    if float('{0}.{1}'.format(*ver[:2])) < 2.7:
-    # Python 2.6 stuff
+    if float('{0}.{1}'.format(*ver[:2])) < {{next_version}}:
+    # Python {{version}} stuff
 
 try:
-    # Python 2.6
+    # Python {{version}}
     import something
 except ImportError:
-    # Python 2.7+
+    # Python {{next_version}}+
     import something_else
 
 // In C code
-#if PY_VERSION_HEX < 0x02070000
+#if PY_VERSION_HEX < 0x0{{major}}0{{next_minor}}0000
 -#endif
 </pre>
 
-                <p>Also search for <code>2.6</code> and <code>26</code>.
+                <p>Also search for <code>{{version}}</code> and <code>{{major}}{{minor}}</code>.
 
-                <p>If you test with coverage, look for code which was tested before removing 2.6 from your CI.
+                <p>If you test with coverage, look for code which was tested before removing {{version}} from your CI.
 
-                <p>Finally, consider dropping support for Python <a href="../3.2">3.2</a> and <a href="../3.3">3.3</a>, which reached EOL on <a href="https://www.python.org/dev/peps/pep-0392/">2016-02-27</a> and <a href="https://www.python.org/dev/peps/pep-0398/">2017-09-29</a> respectively.
+                <p>Finally, consider dropping support for Python <a href="../3.2">3.2</a> and <a href="../3.3">3.3</a>, which reached EOL on <a href="https://en.wikipedia.org/wiki/CPython#Version_history">2016-02-27 and 2017-09-29</a> respectively.
 
                     <h3 id="new-features">Use new Python features</h3>
                     <p>See <a href="https://docs.python.org/3/whatsnew/2.7.html">what's new</a>. For example:
@@ -174,6 +174,14 @@ set([1, 2, 3])  # This can be replaced...
     <script>
         var app = angular.module('app', [])
         .controller('wheelCtrl', function ($scope, $http) {
+            $scope.init = function() {
+                $scope.eol = '29 October 2013';
+                $scope.version = '2.6';
+                $scope.major = parseInt($scope.version.toString()[0]);
+                $scope.minor = parseInt($scope.version.toString()[2]);
+                $scope.next_minor = $scope.minor + 1;
+                $scope.next_version = $scope.major + ($scope.next_minor/10);
+            };
             $http.get('../results.json').then(function(res) {
                 $scope.last_update = res.data.last_update;
                 $scope.packages = res.data.data;
