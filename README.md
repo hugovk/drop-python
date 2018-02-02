@@ -40,6 +40,9 @@ $ python3 -m http.server 8000
 
 $ python2 -m SimpleHTTPServer 8000
 
+# Or:
+
+python -m $(python -c 'import sys; print("http.server" if sys.version_info[:2] > (2, 7) else "SimpleHTTPServer")')],
 ```
 
 Then visit http://localhost:8000/
