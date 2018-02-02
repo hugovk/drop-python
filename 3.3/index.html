@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" ng-app="app" ng-controller="wheelCtrl" ng-init="init()">
+<html lang="en" ng-app="app">
 <head>
     <meta charset="utf-8">
     <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" rel="stylesheet">
@@ -26,16 +26,16 @@
             box-sizing: content-box;
         }
     </style>
-    <title>Drop Python {{version}}</title>
-    <meta property="og:title" content="Drop Python {{version}}">
+    <title ng-bind="metaservice.title()">Drop Python</title>
+    <meta property="og:title" content="Drop Python {{ metaservice.metaVersion() }}">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://hugovk.github.io/drop-python/{{version}}/wheel-og.png">
+    <meta property="og:image" content="https://hugovk.github.io/drop-python/{{ metaservice.version() }}/wheel-og.png">
     <meta property="og:image:width" content="630">
     <meta property="og:image:height" content="630">
-    <meta property="og:url" content="https://hugovk.github.io/drop-python/{{version}}/">
-    <meta property="og:description" content="Python {{version}} reached the end of its life on {{eol}}. It's about time to drop support for Python {{version}}.">
+    <meta property="og:url" content="https://hugovk.github.io/drop-python/{{ metaservice.version() }}/">
+    <meta property="og:description" content="... Python {{ metaservice.version() }} reached the end of its life on {{ metaservice.eol() }}. It's about time to drop support for Python {{ metaservice.version() }}.">
 </head>
-<body>
+<body ng-controller="wheelCtrl" ng-init="init()">
     <div class="container">
         <div class="row">
             <div class="col-sm-6">
@@ -138,11 +138,33 @@ except ImportError:
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
     <script>
-        var app = angular.module('app', [])
-        .controller('wheelCtrl', function ($scope, $http) {
+        var app = angular.module('app', []);
+
+        app.service('MetaService', function() {
+           var eol = '';
+           var version = '';
+           return {
+              set: function(newMetaEol, newVersion) {
+                  eol = newMetaEol;
+                  version = newVersion;
+              },
+              eol: function() { return eol; },
+              title: function(){ return 'Drop Python ' + version; },
+              version: function() { return version; }
+           }
+        });
+
+        app.controller('wheelCtrl', function ($scope, $rootScope, $http, MetaService) {
+
+            var eol = '29 September 2017';
+            var version = '3.3';
+
+            $rootScope.metaservice = MetaService;
+            $rootScope.metaservice.set(eol, version);
+
             $scope.init = function() {
-                $scope.eol = '29 September 2017';
-                $scope.version = '3.3';
+                $scope.eol = eol;
+                $scope.version = version;
                 $scope.major = parseInt($scope.version.toString()[0]);
                 $scope.minor = parseInt($scope.version.toString()[2]);
                 $scope.next_minor = $scope.minor + 1;
