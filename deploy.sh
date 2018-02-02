@@ -21,6 +21,6 @@ git add . # Step 7
 
 git commit -m "Deploy $REV" # Step 8
 
-git push origin gh-pages # Step 9
+git push --force origin gh-pages # Step 9
 
 git checkout - # Step 10
