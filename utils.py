@@ -11,6 +11,7 @@ DEPRECATED_PACKAGES = {
     'BeautifulSoup',
     'distribute',
     'django-social-auth',
+    'pep8',
     'sklearn',
 }
 
