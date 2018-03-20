@@ -27,13 +27,13 @@
         }
     </style>
     <title>Drop Python {{version}}</title>
-    <meta property="og:title" content="Drop Python 3.2">
+    <meta property="og:title" content="Drop Python 3.0">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://hugovk.github.io/drop-python/3.2/wheel-og.png">
+    <meta property="og:image" content="https://hugovk.github.io/drop-python/3.0/wheel-og.png">
     <meta property="og:image:width" content="630">
     <meta property="og:image:height" content="630">
-    <meta property="og:url" content="https://hugovk.github.io/drop-python/3.2/">
-    <meta property="og:description" content="Python 3.2 reached the end of its life on 27 February 2016. It's about time to drop support for Python 3.2.">
+    <meta property="og:url" content="https://hugovk.github.io/drop-python/3.0/">
+    <meta property="og:description" content="Python 3.0 has reached the end of its life. It's about time to drop support for Python 3.0.">
 </head>
 <body>
     <div class="container">
@@ -45,9 +45,9 @@
                 <p>Python {{version}} reached the <a href="https://en.wikipedia.org/wiki/CPython#Version_history">end of its life on {{eol}}</a>. It's about time to drop support for Python {{version}}.</p>
                 <h3 id="reasons">Reasons for dropping</h3>
                 <ul>
-                    <li><a href="https://pip.pypa.io/en/stable/news/">pip 8 no longer supports Python 3.2</a></li>
-                    <li><a href="https://bitbucket.org/ned/coveragepy/issues/407/coverage-failing-on-python-325-using">Coverage 4 no longer supports Python 3.2</a></li>
-                    <li><a href="http://www.python3statement.org/">Requests no longer supports Python 3.2</a></li>
+                    <li><a href="https://pip.pypa.io/en/stable/news/">pip no longer supports Python {{version}}</a></li>
+                    <li><a href="https://bitbucket.org/ned/coveragepy/">Coverage no longer supports Python {{version}}</a></li>
+                    <li><a href="http://www.python3statement.org/">Requests no longer supports Python {{version}}</a></li>
                     <li><a href="https://github.com/pypa/pip/issues/3796">Virtually no PyPI traffic (June 2016)</a></li>
                 </ul>
                 <h2 id="about-list">What is this list?</h2>
@@ -143,8 +143,8 @@ except ImportError:
         var app = angular.module('app', [])
         .controller('wheelCtrl', function ($scope, $http) {
             $scope.init = function() {
-                $scope.eol = '27 February 2016';
-                $scope.version = 3.2;
+                $scope.eol = '27 June 2009';
+                $scope.version = 3.0;
                 $scope.major = parseInt($scope.version.toString()[0]);
                 $scope.minor = parseInt($scope.version.toString()[2]);
                 $scope.next_minor = $scope.minor + 1;
