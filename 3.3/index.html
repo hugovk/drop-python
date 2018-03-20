@@ -143,8 +143,8 @@ except ImportError:
             $scope.init = function() {
                 $scope.eol = '29 September 2017';
                 $scope.version = '3.3';
-                $scope.major = parseInt($scope.version.toString()[0]);
-                $scope.minor = parseInt($scope.version.toString()[2]);
+                $scope.major = parseInt($scope.version[0]);
+                $scope.minor = parseInt($scope.version[2]);
                 $scope.next_minor = $scope.minor + 1;
                 $scope.next_version = $scope.major + ($scope.next_minor/10);
             };
