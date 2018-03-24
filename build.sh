@@ -16,4 +16,4 @@ python generate.py --version 2.{0,1,2,3,4,5,6} 3.{0,1,2,3}
 mkdir -p build
 
 # Copy to output directory
-cp -R {2.{0,1,2,3,4,5,6},3.{0,1,2,3},index.html,results.json,wheel.css} build
+cp -R {2.{0,1,2,3,4,5,6},3.{0,1,2,3},index{,2}.html,results.json,wheel.css} build
