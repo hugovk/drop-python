@@ -10,8 +10,15 @@ BASE_URL = 'https://pypi.python.org/pypi'
 EXCLUDED_PACKAGES = {
     # backports
     'argparse',
+    'backports-abc',
+    'backports-functools-lru-cache',
+    'backports-shutil-get-terminal-size',
+    'backports-ssl-match-hostname',
+    'backports-weakref',
     'enum34',
+    'mock',
     'unittest2',
+
     # deprecated
     'BeautifulSoup',
     'distribute',
