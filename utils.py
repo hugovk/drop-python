@@ -7,7 +7,12 @@ import requests
 
 BASE_URL = 'https://pypi.python.org/pypi'
 
-DEPRECATED_PACKAGES = {
+EXCLUDED_PACKAGES = {
+    # backports
+    'argparse',
+    'enum34',
+    'unittest2',
+    # deprecated
     'BeautifulSoup',
     'distribute',
     'django-social-auth',
@@ -102,13 +107,13 @@ def get_top_packages():
     return packages
 
 
-def not_deprecated(package):
-    return package['name'] not in DEPRECATED_PACKAGES
+def not_excluded(package):
+    return package['name'] not in EXCLUDED_PACKAGES
 
 
 def remove_irrelevant_packages(packages, limit):
     print('Removing cruft...')
-    active_packages = list(filter(not_deprecated, packages))
+    active_packages = list(filter(not_excluded, packages))
     return active_packages[:limit]
 
 
