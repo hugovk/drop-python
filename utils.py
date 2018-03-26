@@ -16,7 +16,12 @@ EXCLUDED_PACKAGES = {
     'backports-ssl-match-hostname',
     'backports-weakref',
     'enum34',
+    'functools32',
     'mock',
+    'monotonic',
+    'ordereddict',
+    'six',
+    'subprocess32',
     'unittest2',
 
     # deprecated
