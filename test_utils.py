@@ -26,7 +26,7 @@ class TestIt(unittest.TestCase):
         ]
 
         # Act
-        has_support = utils.supports(classifiers, "2.6")
+        has_support = utils.classifiers_support(classifiers, "2.6")
 
         # Assert
         self.assertEqual(has_support, "yes")
@@ -44,7 +44,7 @@ class TestIt(unittest.TestCase):
         ]
 
         # Act
-        has_support = utils.supports(classifiers, "2.6")
+        has_support = utils.classifiers_support(classifiers, "2.6")
 
         # Assert
         self.assertEqual(has_support, "no")
@@ -58,7 +58,7 @@ class TestIt(unittest.TestCase):
         ]
 
         # Act
-        has_support = utils.supports(classifiers, "2.6")
+        has_support = utils.classifiers_support(classifiers, "2.6")
 
         # Assert
         self.assertEqual(has_support, "no")
@@ -74,7 +74,7 @@ class TestIt(unittest.TestCase):
         ]
 
         # Act
-        has_support = utils.supports(classifiers, "2.6")
+        has_support = utils.classifiers_support(classifiers, "2.6")
 
         # Assert
         self.assertEqual(has_support, "no")
@@ -89,7 +89,7 @@ class TestIt(unittest.TestCase):
 
         # Act
         # Classifiers are not explicit: we want to assume support
-        has_support = utils.supports(classifiers, "2.6")
+        has_support = utils.classifiers_support(classifiers, "2.6")
 
         # Assert
         self.assertEqual(has_support, "maybe")
@@ -101,7 +101,7 @@ class TestIt(unittest.TestCase):
 
         # Act
         # Classifiers are not explicit: we want to assume support
-        has_support = utils.supports(classifiers, "2.6")
+        has_support = utils.classifiers_support(classifiers, "2.6")
 
         # Assert
         self.assertEqual(has_support, "maybe")

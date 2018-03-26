@@ -42,7 +42,7 @@ def get_json_url(package_name):
     return BASE_URL + '/' + package_name + '/json'
 
 
-def supports(classifiers, version):
+def classifiers_support(classifiers, version):
     """Do these classifiers support this Python version?"""
     desired_classifier = CLASSIFIER.format(version)
 
@@ -80,7 +80,7 @@ def annotate_support(packages, versions=['2.6']):
             # Init
             package[version] = {}
 
-            has_support = supports(data['info']['classifiers'], version)
+            has_support = classifiers_support(data['info']['classifiers'], version)
             if has_support == "yes":
                 package[version]['dropped_support'] = "no"
             if has_support == "no":
