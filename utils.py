@@ -1,9 +1,11 @@
 from __future__ import print_function, unicode_literals
+
 import datetime
 import json
+
 import pytz
 import requests
-
+from pip._vendor.packaging import specifiers
 
 BASE_URL = 'https://pypi.python.org/pypi'
 
@@ -42,7 +44,25 @@ def get_json_url(package_name):
     return BASE_URL + '/' + package_name + '/json'
 
 
-def supports(classifiers, version):
+def requires_python_supports(requires_python, version):
+    """
+    Check if a given Python version matches the `requires_python` specifier.
+
+    Returns "yes" if the version of Python matches the requirement.
+    Returns "no" if the version of Python does not matches the requirement.
+    Returns "maybe" if there's no requirement.
+
+    Raises an InvalidSpecifier if `requires_python` have an invalid format.
+    """
+    if requires_python is None or requires_python == "":
+        # The package provides no information
+        return "maybe"
+    requires_python_specifier = specifiers.SpecifierSet(requires_python)
+
+    return "yes" if version in requires_python_specifier else "no"
+
+
+def classifiers_support(classifiers, version):
     """Do these classifiers support this Python version?"""
     desired_classifier = CLASSIFIER.format(version)
 
@@ -80,7 +100,15 @@ def annotate_support(packages, versions=['2.6']):
             # Init
             package[version] = {}
 
-            has_support = supports(data['info']['classifiers'], version)
+            # First try with requires_python
+            has_support = requires_python_supports(
+                data['info']['requires_python'], version)
+
+            # Second try with classifers
+            if has_support == 'maybe':
+                has_support = classifiers_support(
+                    data['info']['classifiers'], version)
+
             if has_support == "yes":
                 package[version]['dropped_support'] = "no"
             if has_support == "no":

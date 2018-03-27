@@ -9,9 +9,9 @@ import unittest
 import utils
 
 
-class TestIt(unittest.TestCase):
+class TestClassifiersSupport(unittest.TestCase):
 
-    def test_supports_has_support(self):
+    def test_has_support(self):
         # Arrange
         classifiers = [
             "Programming Language :: Python",
@@ -26,12 +26,12 @@ class TestIt(unittest.TestCase):
         ]
 
         # Act
-        has_support = utils.supports(classifiers, "2.6")
+        has_support = utils.classifiers_support(classifiers, "2.6")
 
         # Assert
         self.assertEqual(has_support, "yes")
 
-    def test_supports_no_support_but_others_are(self):
+    def test_no_support_but_others_are(self):
         # Arrange
         classifiers = [
             "Programming Language :: Python",
@@ -44,12 +44,12 @@ class TestIt(unittest.TestCase):
         ]
 
         # Act
-        has_support = utils.supports(classifiers, "2.6")
+        has_support = utils.classifiers_support(classifiers, "2.6")
 
         # Assert
         self.assertEqual(has_support, "no")
 
-    def test_supports_no_support_but_other_2x_are(self):
+    def test_no_support_but_other_2x_are(self):
         # Arrange
         classifiers = [
             "Programming Language :: Python",
@@ -58,12 +58,12 @@ class TestIt(unittest.TestCase):
         ]
 
         # Act
-        has_support = utils.supports(classifiers, "2.6")
+        has_support = utils.classifiers_support(classifiers, "2.6")
 
         # Assert
         self.assertEqual(has_support, "no")
 
-    def test_supports_no_support_but_other_3x_are(self):
+    def test_no_support_but_other_3x_are(self):
         # Arrange
         classifiers = [
             "Programming Language :: Python",
@@ -74,12 +74,12 @@ class TestIt(unittest.TestCase):
         ]
 
         # Act
-        has_support = utils.supports(classifiers, "2.6")
+        has_support = utils.classifiers_support(classifiers, "2.6")
 
         # Assert
         self.assertEqual(has_support, "no")
 
-    def test_supports_no_support_or_any_major_minor(self):
+    def test_maybe_support_or_any_major_minor(self):
         # Arrange
         # No major.minor classifiers
         classifiers = [
@@ -88,20 +88,83 @@ class TestIt(unittest.TestCase):
         ]
 
         # Act
-        # Classifiers are not explicit: we want to assume support
-        has_support = utils.supports(classifiers, "2.6")
+        has_support = utils.classifiers_support(classifiers, "2.6")
 
         # Assert
         self.assertEqual(has_support, "maybe")
 
-    def test_supports_no_support_for_empty(self):
+    def test_maybe_support_for_empty(self):
         # Arrange
         # No classifiers
         classifiers = []
 
         # Act
-        # Classifiers are not explicit: we want to assume support
-        has_support = utils.supports(classifiers, "2.6")
+        has_support = utils.classifiers_support(classifiers, "2.6")
+
+        # Assert
+        self.assertEqual(has_support, "maybe")
+
+
+class TestRequiresPythonSupports(unittest.TestCase):
+
+    def test_has_support(self):
+        # Arrange
+        python_requires = ">=2.6, !=3.0.*, !=3.1.*, !=3.2.*"
+
+        # Act
+        has_support = utils.requires_python_supports(python_requires, "2.6")
+
+        # Assert
+        self.assertEqual(has_support, "yes")
+
+    def test_no_support_but_others_are(self):
+        # Arrange
+        python_requires = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
+
+        # Act
+        has_support = utils.requires_python_supports(python_requires, "2.6")
+
+        # Assert
+        self.assertEqual(has_support, "no")
+
+    def test_no_support_but_other_2x_are(self):
+        # Arrange
+        python_requires = "==2.7"
+
+        # Act
+        has_support = utils.requires_python_supports(python_requires, "2.6")
+
+        # Assert
+        self.assertEqual(has_support, "no")
+
+    def test_no_support_but_other_3x_are(self):
+        # Arrange
+        python_requires = ">=3.4"
+
+        # Act
+        has_support = utils.requires_python_supports(python_requires, "2.6")
+
+        # Assert
+        self.assertEqual(has_support, "no")
+
+    def test_maybe_support_for_none(self):
+        # Arrange
+        # No python_requires
+        python_requires = None
+
+        # Act
+        has_support = utils.requires_python_supports(python_requires, "2.6")
+
+        # Assert
+        self.assertEqual(has_support, "maybe")
+
+    def test_maybe_support_for_empty(self):
+        # Arrange
+        # No python_requires
+        python_requires = ""
+
+        # Act
+        has_support = utils.requires_python_supports(python_requires, "2.6")
 
         # Assert
         self.assertEqual(has_support, "maybe")
