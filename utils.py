@@ -32,6 +32,7 @@ EXCLUDED_PACKAGES = {
     'django-social-auth',
     'nose',
     'pep8',
+    'pycrypto',
     'sklearn',
 }
 
