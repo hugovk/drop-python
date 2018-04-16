@@ -52,7 +52,7 @@
                     <li><a href="https://github.com/pypa/pip/issues/3796">Not much PyPI traffic (June 2016)</a></li>
                 </ul>
                 <h2 id="about-list">What is this list?</h2>
-                <p>This site shows the top 360 most-downloaded packages on <a href="https://pypi.python.org/pypi">PyPI</a> showing which have dropped support for Python {{version}}.</p>
+                <p>This site shows the top 360 most-downloaded packages on <a href="https://pypi.org/project">PyPI</a> showing which have dropped support for Python {{version}}.</p>
                 <ul>
                     <li><span class="text-success">Green</span> packages have dropped Python {{version}},</li>
                     <li><span class="text-muted">White</span> packages may still support Python {{version}}.</li>
@@ -158,7 +158,7 @@ set([1, 2, 3])  # This can be replaced...
             <div class="col-sm-6">
                 <div class="list">
                     <span ng-hide="packages">drop-python requires JavaScript to be enabled to display the list of packages.</span>
-                    <a ng-repeat="package in packages" ng-href="https://pypi.python.org/pypi/{{ package.name }}" class="btn btn-{{ package[version].css_class }}" ng-attr-title="{{package[version].title}}">
+                    <a ng-repeat="package in packages" ng-href="https://pypi.org/project/{{ package.name }}" class="btn btn-{{ package[version].css_class }}" ng-attr-title="{{package[version].title}}">
                         <span ng-bind="package.name"></span>
                         <span ng-bind="package[version].icon"></span>
                     </a>
