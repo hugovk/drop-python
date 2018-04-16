@@ -7,7 +7,7 @@ import pytz
 import requests
 from pip._vendor.packaging import specifiers
 
-BASE_URL = 'https://pypi.python.org/pypi'
+BASE_URL = 'https://pypi.org/pypi'
 
 EXCLUDED_PACKAGES = {
     # backports
