@@ -31,6 +31,7 @@ EXCLUDED_PACKAGES = {
     'BeautifulSoup',
     'distribute',
     'django-social-auth',
+    'letsencrypt',
     'nose',
     'pep8',
     'pycrypto',
