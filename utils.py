@@ -19,6 +19,7 @@ EXCLUDED_PACKAGES = {
     'backports-weakref',
     'enum34',
     'functools32',
+    'futures',
     'mock',
     'monotonic',
     'ordereddict',
