@@ -40,11 +40,16 @@ EXCLUDED_PACKAGES = {
     'BeautifulSoup',
     'distribute',
     'django-social-auth',
+    'google-gax',
     'letsencrypt',
+    'lockfile',
+    'msgpack-python',
     'nose',
+    'oauth2client',
     'pep8',
     'pycrypto',
     'sklearn',
+    'tensorflow-tensorboard',
 }
 
 SESSION = requests.Session()
