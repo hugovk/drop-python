@@ -58,7 +58,13 @@ set([1, 2, 3])  # This can be replaced...
     "3.0": {"template_eol": "27 June 2009"},
     "3.1": {"template_eol": "9 April 2012"},
     "3.2": {"template_eol": "27 February 2016"},
-    "3.3": {"template_eol": "29 September 2017"},
+    "3.3": {
+        "template_eol": "29 September 2017",
+        "reasons": """
+                    <li><a href="https://github.com/pypa/pip/issues/3796">pip 10 deprecated Python 3.3 support, pip 11 won't support it</a></li>
+                    <li><a href="https://github.com/pypa/pip/issues/3796">Very little PyPI traffic (June 2016)</a></li>
+""",
+    },
 }
 
 REASONS = """
