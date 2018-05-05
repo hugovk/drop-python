@@ -71,7 +71,17 @@ envlist=py26</pre>
                             <li>tox.ini
                         </ul>
 
-$template_remove_examples
+
+                    <p>For example, no need to install or import unittest2 any more. This:</p>
+                        <pre>
+try:
+    import unittest2 as unittest  # Python 2.6
+ except ImportError:
+    import unittest</pre>
+                    <p>&hellip;can be replaced with:
+                        <pre>
+import unittest</pre>
+
 
                     <p>Search your code for stuff like:
                         <pre>
