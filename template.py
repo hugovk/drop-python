@@ -11,15 +11,68 @@ SUBSTITUTIONS = {
     "2.3": {"template_eol": "2008-03-11"},
     "2.4": {"template_eol": "19 December 2008"},
     "2.5": {"template_eol": "26 May 2011"},
+    "2.6": {
+        "template_eol": "29 October 2013",
+        "reasons": """
+                    <li><a href="https://pip.pypa.io/en/stable/news/">pip no longer supports Python {{version}}</a></li>
+                    <li><a href="https://snarky.ca/stop-using-python-2-6/">Stop using Python 2.6 please</a></li>
+                    <li><a href="http://www.curiousefficiency.org/posts/2015/04/stop-supporting-python26.html">Stop Supporting Python 2.6 (For Free)</a></li>
+                    <li><a href="http://www.python3statement.org/">Scientific Python moving to require Python 3</a></li>
+                    <li><a href="https://github.com/pypa/pip/issues/3796">Not much PyPI traffic (June 2016)</a></li>
+""",
+        "remove": """
+                    <p>For example, no need to install or import unittest2 any more. This:</p>
+                        <pre>
+try:
+    import unittest2 as unittest  # Python 2.6
+ except ImportError:
+    import unittest</pre>
+                    <p>&hellip;can be replaced with:
+                        <pre>
+import unittest</pre>
+""",
+        "new_features": """
+                    <h3 id="new-features">Use new Python features</h3>
+                    <p>See <a href="https://docs.python.org/3/whatsnew/2.7.html">what's new</a>. For example:
+
+                        <ul>
+                            <li><p>Use <a href="https://renzo.lucioni.xyz/pythons-set-literals/">set literals</a>:</p>
+                                <pre>
+set([1, 2, 3])  # This can be replaced...
+{1, 2, 3}       # ... with this</pre>
+
+                            <li><p>Update <a href="https://pyformat.info/">string formatters</a>:</p>
+                                <pre>
+# These can be replaced...
+'%s %s' % ('one', 'two')
+'{1} {2}'.format('one', 'two')
+
+# ... with this
+'{} {}'.format('one', 'two')</pre>
+
+                            <li>Use <code>OrderedDict</code> and <code>Counter</code> from <code>collections</code>
+                        </ul>
+
+""",
+    },
     "3.0": {"template_eol": "27 June 2009"},
     "3.1": {"template_eol": "9 April 2012"},
+    "3.2": {"template_eol": "27 February 2016"},
+    "3.3": {"template_eol": "29 September 2017"},
 }
+
+REASONS = """
+                    <li><a href="https://pip.pypa.io/en/stable/news/">pip no longer supports Python 2.0</a></li>
+                    <li><a href="https://bitbucket.org/ned/coveragepy/">Coverage no longer supports Python 2.0</a></li>
+                    <li><a href="http://www.python3statement.org/">Requests no longer supports Python 2.0</a></li>
+                    <li><a href="https://github.com/pypa/pip/issues/3796">Virtually no PyPI traffic (June 2016)</a></li>
+
+"""
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
-        description="Template",
-        formatter_class=argparse.ArgumentDefaultsHelpFormatter
+        description="Template", formatter_class=argparse.ArgumentDefaultsHelpFormatter
     )
     parser.add_argument(
         "-v",
@@ -50,6 +103,9 @@ if __name__ == "__main__":
                 "template_minor": minor,
                 "template_next_minor": next_minor,
                 "template_next_version": next_version,
+                "template_reasons": substitutions.get("reasons", REASONS),
+                "template_remove": substitutions.get("remove"),
+                "template_new_features": substitutions.get("new_features"),
             }
 
             # Do the substitution

@@ -19,7 +19,7 @@ script:
 
  # Static analysis
  - pyflakes .
- - pycodestyle --statistics --count .
+ - pycodestyle .
 
  # Test run
  - ./build.sh
