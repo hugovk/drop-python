@@ -2,6 +2,7 @@ from __future__ import print_function, unicode_literals
 
 import datetime
 import json
+import os
 
 import pytz
 import requests
@@ -55,6 +56,11 @@ EXCLUDED_PACKAGES = {
 SESSION = requests.Session()
 
 CLASSIFIER = 'Programming Language :: Python :: {}'
+
+
+def create_dir(dir):
+    if not os.path.isdir(dir):
+        os.mkdir(dir)
 
 
 def get_json_url(package_name):

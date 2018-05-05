@@ -2,6 +2,8 @@ import math
 import os
 import xml.etree.ElementTree as et
 
+from utils import create_dir
+
 HEADERS = b'''<?xml version=\"1.0\" standalone=\"no\"?>
 <?xml-stylesheet href="../wheel.css" type="text/css"?>
 <!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\"
@@ -22,11 +24,6 @@ PADDING = 10
 RADIUS = 180
 CENTER = PADDING + RADIUS
 TAU = 2 * math.pi
-
-
-def create_dir(dir):
-    if not os.path.isdir(dir):
-        os.mkdir(dir)
 
 
 def annular_sector_path(start, stop):
