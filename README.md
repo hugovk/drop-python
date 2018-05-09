@@ -30,6 +30,8 @@ $ python generate.py -v 2.6
 ```
 See also build.sh.
 
+Gets list of packages from [Top PyPI Packages](https://hugovk.github.io/top-pypi-packages/).
+
 ## How to test locally
 
 In another terminal:
