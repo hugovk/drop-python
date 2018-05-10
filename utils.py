@@ -20,6 +20,7 @@ EXCLUDED_PACKAGES = {
     'backports-weakref',
     'configparser',
     'contextlib2',
+    'enum-compat',
     'enum34',
     'funcsigs',
     'functools32',
