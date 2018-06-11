@@ -51,7 +51,16 @@ Then visit http://localhost:8000/
 
 ## How to deploy
 
-Run build.sh to generated the files from the master branch, and copy them to a build subdirectory. Then run deploy.sh to checkout gh-pages, copy the build files back, commit and push to GitHub Pages. Do this hourly from cron.
+Run something like this hourly from cron:
+
+```bash
+set -e
+cd ~/github/drop-python
+git checkout master
+git pull origin master # Makes sure build.sh is up-to-date
+./build.sh             # Generate files from master branch, copy them to a build subdirectory
+./deploy.sh            # Check out gh-pages, copy build files back, commit and push to GitHub Pages
+```
 
 ## Thanks
 
