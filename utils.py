@@ -144,11 +144,11 @@ def annotate_support(packages, versions=['2.6']):
             package['value'] = 1
             if has_support == "no":
                 package[version]['css_class'] = 'success'
-                package[version]['icon'] = u'\u2713'  # Check mark
+                package[version]['icon'] = '\u2713'  # Check mark
                 title = "This package doesn't support Python {}."
             elif has_support == "yes":
                 package[version]['css_class'] = 'default'
-                package[version]['icon'] = u'\u2717'  # Ballot X
+                package[version]['icon'] = '\u2717'  # Ballot X
                 title = 'This package supports Python {}.'
             else:  # "maybe"
                 package[version]['css_class'] = 'default'

@@ -83,7 +83,7 @@ def add_fraction(wheel, packages, total, version):
         x=str(CENTER), y=str(CENTER - OFFSET),
         attrib=text_attributes,
     )
-    packages_with_wheels.text = '{0}'.format(wheel_packages)
+    packages_with_wheels.text = '{}'.format(wheel_packages)
 
     title = et.SubElement(packages_with_wheels, 'title')
     percentage = '{:.0%}'.format(wheel_packages / float(total))
@@ -103,7 +103,7 @@ def add_fraction(wheel, packages, total, version):
         x=str(CENTER), y=str(CENTER + OFFSET),
         attrib=text_attributes,
     )
-    total_packages.text = '{0}'.format(total)
+    total_packages.text = '{}'.format(total)
 
     title = et.SubElement(total_packages, 'title')
     title.text = percentage
@@ -128,7 +128,7 @@ def generate_svg_wheel(packages, total, versions):
                 style_class=result[version]['css_class'],
             )
             title = et.SubElement(sector, 'title')
-            title.text = u'{0} {1}'.format(
+            title.text = '{} {}'.format(
                 result['name'], result[version]['icon'])
 
         add_fraction(wheel, packages, total, version)
