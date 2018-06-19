@@ -31,6 +31,7 @@ EXCLUDED_PACKAGES = {
     'monotonic',
     'ordereddict',
     'pathlib2',
+    'simplejson',
     'singledispatch',
     'six',
     'subprocess32',
