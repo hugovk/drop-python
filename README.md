@@ -1,6 +1,7 @@
 # Drop Python
 
 [![Build Status](https://travis-ci.org/hugovk/drop-python.svg?branch=master)](https://travis-ci.org/hugovk/drop-python)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)
 
 It's about time to drop support for old Pythons.
 
