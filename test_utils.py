@@ -10,7 +10,6 @@ import utils
 
 
 class TestClassifiersSupport(unittest.TestCase):
-
     def test_has_support(self):
         # Arrange
         classifiers = [
@@ -106,7 +105,6 @@ class TestClassifiersSupport(unittest.TestCase):
 
 
 class TestRequiresPythonSupports(unittest.TestCase):
-
     def test_has_support(self):
         # Arrange
         python_requires = ">=2.6, !=3.0.*, !=3.1.*, !=3.2.*"
@@ -170,7 +168,7 @@ class TestRequiresPythonSupports(unittest.TestCase):
         self.assertEqual(has_support, "maybe")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()
 
 # End of file
