@@ -30,6 +30,7 @@ EXCLUDED_PACKAGES = {
     "mock",
     "monotonic",
     "ordereddict",
+    "pathlib",
     "pathlib2",
     "simplejson",
     "singledispatch",
