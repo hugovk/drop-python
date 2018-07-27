@@ -13,10 +13,10 @@ git pull origin master
 wget https://hugovk.github.io/top-pypi-packages/top-pypi-packages-365-days.min.json -O top-pypi-packages.json
 
 # Generate the files
-python3 generate.py --version 2.{0,1,2,3,4,5,6} 3.{0,1,2,3}
+python3 generate.py --version 2.{0,1,2,3,4,5,6,7} 3.{0,1,2,3}
 
 # Create index.html files from the template
-python3 template.py --version 2.{0,1,2,3,4,5,6} 3.{0,1,2,3}
+python3 template.py --version 2.{0,1,2,3,4,5,6,7} 3.{0,1,2,3}
 
 # Make output directory, don't fail if it exists
 mkdir -p build

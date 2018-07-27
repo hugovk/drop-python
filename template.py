@@ -56,6 +56,16 @@ set([1, 2, 3])  # This can be replaced...
 
 """,
     },
+    "2.7": {
+        "template_eol": "1 January 2020",
+        "reasons": """
+                    <li><a href="https://pythonclock.org/">Python 2.7 Countdown</a></li>
+                    <li><a href="https://python3statement.org/">Sunsetting Python 2 support</a></li>
+""",
+        "remove": """
+                    <p>Follow this guide: <a href="https://python3statement.org/practicalities/">https://python3statement.org/practicalities/</a>
+""",
+    },
     "3.0": {"template_eol": "27 June 2009"},
     "3.1": {"template_eol": "9 April 2012"},
     "3.2": {"template_eol": "27 February 2016"},
@@ -119,6 +129,9 @@ if __name__ == "__main__":
 
             # Do the substitution
             result = src.safe_substitute(d)
+            if version == "2.7":
+                result = result.replace("about time", "soon time")
+                result = result.replace("Python 2.7 reached", "Python 2.7 reaches the")
             # print(result)
 
             # Save it
