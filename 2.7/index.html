@@ -7,39 +7,35 @@
     <link rel="icon" href="favicon.ico">
     <link rel="icon" href="wheel.png">
     <link rel="stylesheet" href="../style.css">
-    <title>Drop Python 2.3</title>
-    <meta property="og:title" content="Drop Python 2.3">
+    <title>Drop Python 2.7</title>
+    <meta property="og:title" content="Drop Python 2.7">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://hugovk.github.io/drop-python/2.3/wheel-og.png">
+    <meta property="og:image" content="https://hugovk.github.io/drop-python/2.7/wheel-og.png">
     <meta property="og:image:width" content="630">
     <meta property="og:image:height" content="630">
-    <meta property="og:url" content="https://hugovk.github.io/drop-python/2.3/">
-    <meta property="og:description" content="Python 2.3 reached the end of its life on 2008-03-11. It's about time to drop support for Python 2.3.">
+    <meta property="og:url" content="https://hugovk.github.io/drop-python/2.7/">
+    <meta property="og:description" content="Python 2.7 reaches the the end of its life on 1 January 2020. It's soon time to drop support for Python 2.7.">
 </head>
-<body ng-controller="wheelCtrl" ng-init="version='2.3'">
+<body ng-controller="wheelCtrl" ng-init="version='2.7'">
     <div class="container">
         <div class="row">
             <div class="col-sm-6">
-            <h1 id="drop"><a href="..">Drop Python</a> 2.3</h1>
+            <h1 id="drop"><a href="..">Drop Python</a> 2.7</h1>
                 <object data="wheel.svg" type="image/svg+xml" width="380" height="380" class="center-block"></object>
                 <h2 id="what">What is this about?</h2>
-                <p>Python 2.3 reached the <a href="https://en.wikipedia.org/wiki/CPython#Version_history">end of its life on 2008-03-11</a>. It's about time to drop support for Python 2.3.</p>
+                <p>Python 2.7 reaches the the <a href="https://en.wikipedia.org/wiki/CPython#Version_history">end of its life on 1 January 2020</a>. It's soon time to drop support for Python 2.7.</p>
                 <h3 id="reasons">Reasons for dropping</h3>
                 <ul>
 
-                    <li><a href="https://pip.pypa.io/en/stable/news/">pip no longer supports Python {{version}}</a></li>
-                    <li><a href="https://bitbucket.org/ned/coveragepy/">Coverage no longer supports Python {{version}}</a></li>
-                    <li><a href="https://www.python3statement.org/">Requests no longer supports Python {{version}}</a></li>
-                    <li><a href="https://github.com/pypa/pip/issues/3796">Virtually no PyPI traffic (June 2016)</a></li>
-                    <li><a href="https://medium.com/@hugovk/python-version-share-over-time-cf4498822650">Virtually no PyPI traffic (June 2018)</a></li>
-
+                    <li><a href="https://pythonclock.org/">Python 2.7 Countdown</a></li>
+                    <li><a href="https://python3statement.org/">Sunsetting Python 2 support</a></li>
 
                 </ul>
                 <h2 id="about-list">What is this list?</h2>
-                <p>This site shows the top 360 most-downloaded packages on <a href="https://pypi.org/">PyPI</a> showing which have dropped support for Python 2.3.</p>
+                <p>This site shows the top 360 most-downloaded packages on <a href="https://pypi.org/">PyPI</a> showing which have dropped support for Python 2.7.</p>
                 <ul>
-                    <li><span class="text-success">Green</span> packages have dropped Python 2.3,</li>
-                    <li><span class="text-muted">White</span> packages may still support Python 2.3.</li>
+                    <li><span class="text-success">Green</span> packages have dropped Python 2.7,</li>
+                    <li><span class="text-muted">White</span> packages may still support Python 2.7.</li>
                 </ul>
                 <p>Packages that are backports (for example, enum34) or known to be deprecated are not included (for example, distribute). If your package is incorrectly listed, please <a href="https://github.com/hugovk/drop-python/issues/">create a ticket</a>.</p>
                 <p>This is not an official website, just a nice visual way to measure progress. To see the authoritative guide on wheels and other aspects of python packaging, see the <a href="https://packaging.python.org">Python Packaging User Guide</a>.</p>
@@ -47,23 +43,23 @@
                     <h3 id="remove-classifier">Remove the classifier</h3>
                     <p>Remove the Trove classifier from setup.py.</p>
                         <pre>
-'Programming Language :: Python :: 2.3'</pre>
+'Programming Language :: Python :: 2.7'</pre>
 
-                    <h3 id="stop-testing">Stop testing 2.3</h3>
-                    <p>Remove Python 2.3 from your CI. For example Travis CI's .travis.yml:</p>
+                    <h3 id="stop-testing">Stop testing 2.7</h3>
+                    <p>Remove Python 2.7 from your CI. For example Travis CI's .travis.yml:</p>
                         <pre>
 python:
- - 2.3</pre>
+ - 2.7</pre>
 <p>And for example from Appveyor's appveyor.yml:
                         <pre>
-C:\Python23
-C:\Python23-x64</pre>
+C:\Python27
+C:\Python27-x64</pre>
                     <p>And tox.ini:
                         <pre>
-envlist=py23</pre>
+envlist=py27</pre>
 
                     <h3 id="remove-code">Remove old code and documentation</h3>
-                    <p>Remove old Python 2.3-specific code and documentation. Common files to check:
+                    <p>Remove old Python 2.7-specific code and documentation. Common files to check:
                         <ul>
                             <li>.travis.yml
                             <li>appveyor.yml
@@ -73,34 +69,36 @@ envlist=py23</pre>
                         </ul>
 
 
+                    <p>Follow this guide: <a href="https://python3statement.org/practicalities/">https://python3statement.org/practicalities/</a>
+
 
                     <p>Search your code for stuff like:
                         <pre>
-if sys.version_info < (2, 4):
-    # Python 2.3 stuff
+if sys.version_info < (2, 8):
+    # Python 2.7 stuff
 
-if platform.python_version == "2.3":
-    # Python 2.3 stuff
+if platform.python_version == "2.7":
+    # Python 2.7 stuff
 
 ver = platform.python_version_tuple()
-    if float('{0}.{1}'.format(*ver[:2])) < 2.4:
-    # Python 2.3 stuff
+    if float('{0}.{1}'.format(*ver[:2])) < 2.8:
+    # Python 2.7 stuff
 
 try:
-    # Python 2.3
+    # Python 2.7
     import something
 except ImportError:
-    # Python 2.4+
+    # Python 2.8+
     import something_else
 
 // In C code
-#if PY_VERSION_HEX < 0x02040000
+#if PY_VERSION_HEX < 0x02080000
 -#endif
 </pre>
 
-                <p>Also search for <code>2.3</code> and <code>23</code>.
+                <p>Also search for <code>2.7</code> and <code>27</code>.
 
-                <p>If you test with coverage, look for code which was tested before removing 2.3 from your CI.
+                <p>If you test with coverage, look for code which was tested before removing 2.7 from your CI.
 
                 <p>Finally, consider dropping support for Python <a href="../2.6">2.6</a> and <a href="../3.3">3.3</a>, which reached EOL on <a href="https://en.wikipedia.org/wiki/CPython#Version_history">2013-10-29 and 2017-09-29</a> respectively.
 
