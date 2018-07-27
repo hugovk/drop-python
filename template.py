@@ -19,6 +19,7 @@ SUBSTITUTIONS = {
                     <li><a href="https://www.curiousefficiency.org/posts/2015/04/stop-supporting-python26.html">Stop Supporting Python 2.6 (For Free)</a></li>
                     <li><a href="https://www.python3statement.org/">Scientific Python moving to require Python 3</a></li>
                     <li><a href="https://github.com/pypa/pip/issues/3796">Not much PyPI traffic (June 2016)</a></li>
+                    <li><a href="https://medium.com/@hugovk/python-version-share-over-time-cf4498822650">Virtually no PyPI traffic (June 2018)</a></li>
 """,
         "remove": """
                     <p>For example, no need to install or import unittest2 any more. This:</p>
@@ -63,6 +64,7 @@ set([1, 2, 3])  # This can be replaced...
         "reasons": """
                     <li><a href="https://github.com/pypa/pip/issues/3796">pip 10 deprecated Python 3.3 support, pip 11 won't support it</a></li>
                     <li><a href="https://github.com/pypa/pip/issues/3796">Very little PyPI traffic (June 2016)</a></li>
+                    <li><a href="https://medium.com/@hugovk/python-version-share-over-time-cf4498822650">Virtually no PyPI traffic (June 2018)</a></li>
 """,
     },
 }
@@ -72,6 +74,7 @@ REASONS = """
                     <li><a href="https://bitbucket.org/ned/coveragepy/">Coverage no longer supports Python {{version}}</a></li>
                     <li><a href="https://www.python3statement.org/">Requests no longer supports Python {{version}}</a></li>
                     <li><a href="https://github.com/pypa/pip/issues/3796">Virtually no PyPI traffic (June 2016)</a></li>
+                    <li><a href="https://medium.com/@hugovk/python-version-share-over-time-cf4498822650">Virtually no PyPI traffic (June 2018)</a></li>
 
 """
 
