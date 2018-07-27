@@ -113,8 +113,8 @@ if __name__ == "__main__":
                 "template_next_minor": next_minor,
                 "template_next_version": next_version,
                 "template_reasons": substitutions.get("reasons", REASONS),
-                "template_remove_examples": substitutions.get("remove"),
-                "template_new_features": substitutions.get("new_features"),
+                "template_remove_examples": substitutions.get("remove", ""),
+                "template_new_features": substitutions.get("new_features", ""),
             }
 
             # Do the substitution
