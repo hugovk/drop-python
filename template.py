@@ -68,9 +68,9 @@ set([1, 2, 3])  # This can be replaced...
 }
 
 REASONS = """
-                    <li><a href="https://pip.pypa.io/en/stable/news/">pip no longer supports Python 2.0</a></li>
-                    <li><a href="https://bitbucket.org/ned/coveragepy/">Coverage no longer supports Python 2.0</a></li>
-                    <li><a href="http://www.python3statement.org/">Requests no longer supports Python 2.0</a></li>
+                    <li><a href="https://pip.pypa.io/en/stable/news/">pip no longer supports Python {{version}}</a></li>
+                    <li><a href="https://bitbucket.org/ned/coveragepy/">Coverage no longer supports Python {{version}}</a></li>
+                    <li><a href="http://www.python3statement.org/">Requests no longer supports Python {{version}}</a></li>
                     <li><a href="https://github.com/pypa/pip/issues/3796">Virtually no PyPI traffic (June 2016)</a></li>
 
 """
