@@ -16,8 +16,8 @@ SUBSTITUTIONS = {
         "reasons": """
                     <li><a href="https://pip.pypa.io/en/stable/news/">pip no longer supports Python {{version}}</a></li>
                     <li><a href="https://snarky.ca/stop-using-python-2-6/">Stop using Python 2.6 please</a></li>
-                    <li><a href="http://www.curiousefficiency.org/posts/2015/04/stop-supporting-python26.html">Stop Supporting Python 2.6 (For Free)</a></li>
-                    <li><a href="http://www.python3statement.org/">Scientific Python moving to require Python 3</a></li>
+                    <li><a href="https://www.curiousefficiency.org/posts/2015/04/stop-supporting-python26.html">Stop Supporting Python 2.6 (For Free)</a></li>
+                    <li><a href="https://www.python3statement.org/">Scientific Python moving to require Python 3</a></li>
                     <li><a href="https://github.com/pypa/pip/issues/3796">Not much PyPI traffic (June 2016)</a></li>
 """,
         "remove": """
@@ -70,7 +70,7 @@ set([1, 2, 3])  # This can be replaced...
 REASONS = """
                     <li><a href="https://pip.pypa.io/en/stable/news/">pip no longer supports Python {{version}}</a></li>
                     <li><a href="https://bitbucket.org/ned/coveragepy/">Coverage no longer supports Python {{version}}</a></li>
-                    <li><a href="http://www.python3statement.org/">Requests no longer supports Python {{version}}</a></li>
+                    <li><a href="https://www.python3statement.org/">Requests no longer supports Python {{version}}</a></li>
                     <li><a href="https://github.com/pypa/pip/issues/3796">Virtually no PyPI traffic (June 2016)</a></li>
 
 """
