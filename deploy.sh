@@ -9,7 +9,7 @@ set -e
 # Gets commit hash as message
 REV=`git rev-parse HEAD`
 
-git checkout gh-pages # Step 3
+git checkout --force gh-pages # Step 3
 
 git rm -rf . # Step 4
 
