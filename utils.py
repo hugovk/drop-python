@@ -26,6 +26,7 @@ EXCLUDED_PACKAGES = {
     "functools32",
     "future",
     "futures",
+    "ipaddress",
     "linecache2",
     "mock",
     "monotonic",
