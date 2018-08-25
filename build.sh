@@ -22,7 +22,7 @@ python3 template.py --version 2.{0,1,2,3,4,5,6,7} 3.{0,1,2,3}
 mkdir -p build
 
 # Copy to output directory
-cp -R {2.{0,1,2,3,4,5,6},3.{0,1,2,3},index{,2}.html,results.json,style.css,wheel.css} build
+cp -R {2.{0,1,2,3,4,5,6,7},3.{0,1,2,3},index{,2}.html,results.json,style.css,wheel.css} build
 
 # Remove templated index.html files
-rm {2.{0,1,2,3,4,5,6},3.{0,1,2,3}}/index.html
+rm {2.{0,1,2,3,4,5,6,7},3.{0,1,2,3}}/index.html
