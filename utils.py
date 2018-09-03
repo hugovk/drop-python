@@ -45,6 +45,7 @@ EXCLUDED_PACKAGES = {
     "distribute",
     "django-social-auth",
     "google-gax",
+    "jws",
     "letsencrypt",
     "lockfile",
     "msgpack-python",
