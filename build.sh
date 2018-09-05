@@ -12,9 +12,6 @@ git pull origin master
 # Fetch fresh copy of top packages
 wget https://hugovk.github.io/top-pypi-packages/top-pypi-packages-365-days.min.json -O top-pypi-packages.json
 
-# Install requirements
-pip3 install -r requirements.txt
-
 # Generate the files
 python3 generate.py --version 2.{0,1,2,3,4,5,6,7} 3.{0,1,2,3,4}
 

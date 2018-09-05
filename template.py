@@ -1,8 +1,7 @@
 import argparse
+import datetime
 import os
 from string import Template
-
-import maya  # pip install maya
 
 from utils import create_dir
 
@@ -110,7 +109,7 @@ if __name__ == "__main__":
         # Read it
         src = Template(infile.read())
 
-        now = maya.now()
+        now = datetime.datetime.utcnow()
         for version in args.version:
 
             # Document data
@@ -135,7 +134,9 @@ if __name__ == "__main__":
             result = src.safe_substitute(d)
 
             # EOL in the future?
-            if now < maya.when(substitutions["template_eol"]):
+            if now < datetime.datetime.strptime(
+                substitutions["template_eol"], "%d %B %Y"
+            ):
                 result = result.replace("about time", "soon time")
                 result = result.replace(" reached the ", " reaches the ")
             # print(result)
