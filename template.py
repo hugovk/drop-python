@@ -133,10 +133,15 @@ if __name__ == "__main__":
             # Do the substitution
             result = src.safe_substitute(d)
 
+            try:
+                # 1 January 2020
+                eol = datetime.datetime.strptime(substitutions["template_eol"], "%d %B %Y")
+            except ValueError:
+                # 2020-01-01
+                eol = datetime.datetime.strptime(substitutions["template_eol"], "%Y-%m-%d")
+
             # EOL in the future?
-            if now < datetime.datetime.strptime(
-                substitutions["template_eol"], "%d %B %Y"
-            ):
+            if now < eol:
                 result = result.replace("about time", "soon time")
                 result = result.replace(" reached the ", " reaches the ")
             # print(result)
