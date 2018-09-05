@@ -78,7 +78,7 @@ set([1, 2, 3])  # This can be replaced...
                     <li><a href="https://medium.com/@hugovk/python-version-share-over-time-cf4498822650">Virtually no PyPI traffic (June 2018)</a></li>
 """,
     },
-    "3.4": {"template_eol": "16 March 2019"},
+    "3.4": {"template_eol": "16 March 2019", "reasons": "<li>It's EOL</li>"},
 }
 
 REASONS = """
@@ -135,10 +135,14 @@ if __name__ == "__main__":
 
             try:
                 # 1 January 2020
-                eol = datetime.datetime.strptime(substitutions["template_eol"], "%d %B %Y")
+                eol = datetime.datetime.strptime(
+                    substitutions["template_eol"], "%d %B %Y"
+                )
             except ValueError:
                 # 2020-01-01
-                eol = datetime.datetime.strptime(substitutions["template_eol"], "%Y-%m-%d")
+                eol = datetime.datetime.strptime(
+                    substitutions["template_eol"], "%Y-%m-%d"
+                )
 
             # EOL in the future?
             if now < eol:
