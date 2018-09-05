@@ -2,6 +2,8 @@ import argparse
 import os
 from string import Template
 
+import maya  # pip install maya
+
 from utils import create_dir
 
 SUBSTITUTIONS = {
@@ -107,6 +109,7 @@ if __name__ == "__main__":
         # Read it
         src = Template(infile.read())
 
+        now = maya.now()
         for version in args.version:
 
             # Document data
@@ -129,9 +132,11 @@ if __name__ == "__main__":
 
             # Do the substitution
             result = src.safe_substitute(d)
-            if version == "2.7":
+
+            # EOL in the future?
+            if now < maya.when(substitutions["template_eol"]):
                 result = result.replace("about time", "soon time")
-                result = result.replace("Python 2.7 reached", "Python 2.7 reaches the")
+                result = result.replace(" reached the ", " reaches the ")
             # print(result)
 
             # Save it
