@@ -79,6 +79,7 @@ set([1, 2, 3])  # This can be replaced...
                     <li><a href="https://medium.com/@hugovk/python-version-share-over-time-cf4498822650">Virtually no PyPI traffic (June 2018)</a></li>
 """,
     },
+    "3.4": {"template_eol": "16 March 2019"},
 }
 
 REASONS = """
