@@ -103,6 +103,23 @@ class TestClassifiersSupport(unittest.TestCase):
         # Assert
         self.assertEqual(has_support, "maybe")
 
+    def test_maybe_support_for_3x(self):
+        # Arrange
+        # We have major but no major.minor
+        classifiers = [
+            "Programming Language :: Python :: 2.4",
+            "Programming Language :: Python :: 2.5",
+            "Programming Language :: Python :: 2.6",
+            "Programming Language :: Python :: 2.7",
+            "Programming Language :: Python :: 3",
+        ]
+
+        # Act
+        has_support = utils.classifiers_support(classifiers, "3.4")
+
+        # Assert
+        self.assertEqual(has_support, "maybe")
+
 
 class TestRequiresPythonSupports(unittest.TestCase):
     def test_has_support(self):
