@@ -92,19 +92,26 @@ def requires_python_supports(requires_python, version):
 def classifiers_support(classifiers, version):
     """Do these classifiers support this Python version?"""
     desired_classifier = CLASSIFIER.format(version)
+    major, minor = version.split(".")
+    some_version_listed = False
 
-    # Explicit support
+    # Explicit major.minor support
     if desired_classifier in classifiers:
         return "yes"
 
     # Check if classifiers are explicit.
-    # Only report "no" when at least one major.minor version is explicitly
+    # Only report "no" when at least one other major.minor version is explicitly
     # supported (but not the desired one).
+    # ie. major and major.other present, but major.minor is missing.
     for classifier in classifiers:
-        if CLASSIFIER.format("2.") in classifier:
+        if "{}.".format(major) in classifier:
             return "no"
-        if CLASSIFIER.format("3.") in classifier:
-            return "no"
+        if "Programming Language :: Python " in classifier:
+            some_version_listed = True
+
+    # We have at least some version listed, but not even this major
+    if some_version_listed and CLASSIFIER.format(major) not in classifiers:
+        return "no"
 
     # Otherwise?
     return "maybe"
