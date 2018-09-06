@@ -106,8 +106,11 @@ def classifiers_support(classifiers, version):
     for classifier in classifiers:
         if "{}.".format(major) in classifier:
             return "no"
-        if "Programming Language :: Python " in classifier:
+        if "Programming Language :: Python ::" in classifier:
             some_version_listed = True
+
+    if major == "2" and "Programming Language :: Python" in classifiers:
+        return "maybe"
 
     # We have at least some version listed, but not even this major
     if some_version_listed and CLASSIFIER.format(major) not in classifiers:

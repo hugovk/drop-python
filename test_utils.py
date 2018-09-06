@@ -76,7 +76,7 @@ class TestClassifiersSupport(unittest.TestCase):
         has_support = utils.classifiers_support(classifiers, "2.6")
 
         # Assert
-        self.assertEqual(has_support, "no")
+        self.assertEqual(has_support, "maybe")
 
     def test_maybe_support_or_any_major_minor(self):
         # Arrange
@@ -116,6 +116,20 @@ class TestClassifiersSupport(unittest.TestCase):
 
         # Act
         has_support = utils.classifiers_support(classifiers, "3.4")
+
+        # Assert
+        self.assertEqual(has_support, "maybe")
+
+    def test_maybe_support_for_2x(self):
+        # Arrange
+        # We have major but no major.minor
+        classifiers = [
+            "Programming Language :: Python",
+            "Programming Language :: Python :: 3",
+        ]
+
+        # Act
+        has_support = utils.classifiers_support(classifiers, "2.6")
 
         # Assert
         self.assertEqual(has_support, "maybe")
