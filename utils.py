@@ -53,6 +53,7 @@ EXCLUDED_PACKAGES = {
     "oauth2client",
     "pep8",
     "pycrypto",
+    "retrying",
     "sklearn",
     "tensorflow-tensorboard",
 }
