@@ -62,6 +62,7 @@ set([1, 2, 3])  # This can be replaced...
         "reasons": """
                     <li><a href="https://pythonclock.org/">Python 2.7 Countdown</a></li>
                     <li><a href="https://python3statement.org/">Sunsetting Python 2 support</a></li>
+                    <li><a href="https://whypy3.com/">Why Python 3?</a></li>
 """,
         "remove": """
                     <p>Follow this guide: <a href="https://python3statement.org/practicalities/">https://python3statement.org/practicalities/</a>
