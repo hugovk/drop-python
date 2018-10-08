@@ -106,7 +106,7 @@ def classifiers_support(classifiers, version):
     # supported (but not the desired one).
     # ie. major and major.other present, but major.minor is missing.
     for classifier in classifiers:
-        if "{}.".format(major) in classifier:
+        if f"{major}." in classifier:
             return "no"
         if "Programming Language :: Python ::" in classifier:
             some_version_listed = True

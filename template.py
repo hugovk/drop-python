@@ -117,7 +117,7 @@ if __name__ == "__main__":
             print(version)
             major, minor = version.split(".")
             next_minor = int(minor) + 1
-            next_version = "{}.{}".format(major, next_minor)
+            next_version = f"{major}.{next_minor}"
             substitutions = SUBSTITUTIONS[version]
             d = {
                 "template_version": version,
