@@ -56,6 +56,7 @@ EXCLUDED_PACKAGES = {
     "pycrypto",
     "retrying",
     "sklearn",
+    "simplegeneric",
     "tensorflow-tensorboard",
 }
 
