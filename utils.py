@@ -33,6 +33,7 @@ EXCLUDED_PACKAGES = {
     "ordereddict",
     "pathlib",
     "pathlib2",
+    "scandir",
     "simplejson",
     "singledispatch",
     "six",
