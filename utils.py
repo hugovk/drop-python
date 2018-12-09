@@ -55,6 +55,7 @@ EXCLUDED_PACKAGES = {
     "oauth2client",
     "pep8",
     "pycrypto",
+    "raven",
     "retrying",
     "sklearn",
     "simplegeneric",
