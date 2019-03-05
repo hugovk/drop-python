@@ -1,10 +1,12 @@
 language: python
 cache: pip
+dist: xenial
 
 # Supported CPython versions:
 # https://en.wikipedia.org/wiki/CPython#Version_history
 python:
  - 3.6
+ - 3.7
 
 install:
  - pip install pycodestyle pyflakes
