@@ -17,27 +17,27 @@
     <meta property="og:description" content="Old Python versions have reached end of life. It's about time to drop support for them.">
 </head>
 <body ng-controller="wheelCtrl">
-    <div class="container">
-        <h1 id="drop">Drop Python</h1>
-        <div class="row">
-            <div class="col-sm-6">
-                <h2 id="2.6"><a href="2.6">Python 2.6</a></h2>
-                <object data="2.6/wheel.svg" type="image/svg+xml" width="380" height="380" class="center-block"></object>
-            </div>
-            <div class="col-sm-6">
-                <h2 id="2.7"><a href="2.7">Python 2.7</a></h2>
-                <object data="2.7/wheel.svg" type="image/svg+xml" width="380" height="380" class="center-block"></object>
-            </div>
+<div class="container">
+    <h1 id="drop">Drop Python</h1>
+    <div class="row">
+        <div class="col-sm-6">
+            <h2 id="2.6"><a href="2.6">Python 2.6</a></h2>
+            <object data="2.6/wheel.svg" type="image/svg+xml" width="380" height="380" class="center-block"></object>
         </div>
-        <div class="row">
-            <div class="col-sm-6">
-                <h2 id="3.2"><a href="3.2">Python 3.2</a></h2>
-                <object data="3.2/wheel.svg" type="image/svg+xml" width="380" height="380" class="center-block"></object>
-            </div>
-            <div class="col-sm-6">
-                <h2 id="3.3"><a href="3.3">Python 3.3</a></h2>
-                <object data="3.3/wheel.svg" type="image/svg+xml" width="380" height="380" class="center-block"></object>
-            </div>
+        <div class="col-sm-6">
+            <h2 id="2.7"><a href="2.7">Python 2.7</a></h2>
+            <object data="2.7/wheel.svg" type="image/svg+xml" width="380" height="380" class="center-block"></object>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <h2 id="3.2"><a href="3.2">Python 3.2</a></h2>
+            <object data="3.2/wheel.svg" type="image/svg+xml" width="380" height="380" class="center-block"></object>
+        </div>
+        <div class="col-sm-6">
+            <h2 id="3.3"><a href="3.3">Python 3.3</a></h2>
+            <object data="3.3/wheel.svg" type="image/svg+xml" width="380" height="380" class="center-block"></object>
+        </div>
         <div class="row">
             <div class="col-sm-6">
 
@@ -80,22 +80,22 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
     <script>
         var app = angular.module('app', [])
-        .controller('wheelCtrl', function ($scope, $http) {
-            $http.get('results.json').then(function(res) {
-                $scope.last_update = res.data.last_update;
-                $scope.packages = res.data.data;
+            .controller('wheelCtrl', function ($scope, $http) {
+                $http.get('results.json').then(function(res) {
+                    $scope.last_update = res.data.last_update;
+                    $scope.packages = res.data.data;
+                });
             });
-        });
     </script>
     <script type="text/javascript">
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-2827121-17']);
-      _gaq.push(['_trackPageview']);
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-2827121-17']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
     </script>
 </body>
 </html>
