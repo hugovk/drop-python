@@ -21,7 +21,7 @@ SUBSTITUTIONS = {
                     <li><a href="https://www.python3statement.org/">Scientific Python moving to require Python 3</a></li>
                     <li><a href="https://github.com/pypa/pip/issues/3796">Not much PyPI traffic (June 2016)</a></li>
                     <li><a href="https://medium.com/@hugovk/python-version-share-over-time-cf4498822650">Virtually no PyPI traffic (June 2018)</a></li>
-""",
+""",  # noqa: E501
         "remove": """
                     <p>For example, no need to install or import unittest2 any more. This:</p>
                         <pre>
@@ -32,7 +32,7 @@ try:
                     <p>&hellip;can be replaced with:
                         <pre>
 import unittest</pre>
-""",
+""",  # noqa: E501
         "new_features": """
                     <h3 id="new-features">Use new Python features</h3>
                     <p>See <a href="https://docs.python.org/3/whatsnew/2.7.html">what's new</a>. For example:
@@ -55,7 +55,7 @@ set([1, 2, 3])  # This can be replaced...
                             <li>Use <code>OrderedDict</code> and <code>Counter</code> from <code>collections</code>
                         </ul>
 
-""",
+""",  # noqa: E501
     },
     "2.7": {
         "template_eol": "1 January 2020",
@@ -64,10 +64,10 @@ set([1, 2, 3])  # This can be replaced...
                     <li><a href="https://python3statement.org/">Sunsetting Python 2 support</a></li>
                     <li><a href="https://whypy3.com/">Why Python 3?</a></li>
                     <li><a href="https://pythonclock.org/">Python 2.7 Countdown</a></li>
-""",
+""",  # noqa: E501
         "remove": """
                     <p>Follow this guide: <a href="https://python3statement.org/practicalities/">https://python3statement.org/practicalities/</a>
-""",
+""",  # noqa: E501
     },
     "3.0": {"template_eol": "27 June 2009"},
     "3.1": {"template_eol": "9 April 2012"},
@@ -78,7 +78,7 @@ set([1, 2, 3])  # This can be replaced...
                     <li><a href="https://github.com/pypa/pip/issues/3796">pip 10 deprecated Python 3.3 support, pip 11 won't support it</a></li>
                     <li><a href="https://github.com/pypa/pip/issues/3796">Very little PyPI traffic (June 2016)</a></li>
                     <li><a href="https://medium.com/@hugovk/python-version-share-over-time-cf4498822650">Virtually no PyPI traffic (June 2018)</a></li>
-""",
+""",  # noqa: E501
     },
     "3.4": {"template_eol": "16 March 2019", "reasons": "<li>It's EOL</li>"},
 }
@@ -90,7 +90,7 @@ REASONS = """
                     <li><a href="https://github.com/pypa/pip/issues/3796">Virtually no PyPI traffic (June 2016)</a></li>
                     <li><a href="https://medium.com/@hugovk/python-version-share-over-time-cf4498822650">Virtually no PyPI traffic (June 2018)</a></li>
 
-"""
+"""  # noqa: E501
 
 
 if __name__ == "__main__":
