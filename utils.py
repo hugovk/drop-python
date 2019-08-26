@@ -26,6 +26,7 @@ EXCLUDED_PACKAGES = {
     "functools32",
     "future",
     "futures",
+    "importlib-metadata",
     "ipaddress",
     "linecache2",
     "mock",
