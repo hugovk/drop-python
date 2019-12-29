@@ -1,9 +1,7 @@
 #!/usr/bin/env python
-# encoding: utf-8
 """
 Unit tests for utils.py
 """
-from __future__ import print_function, unicode_literals
 import unittest
 
 import utils

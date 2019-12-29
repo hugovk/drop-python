@@ -1,4 +1,5 @@
 import argparse
+
 from svg_wheel import generate_svg_wheel
 from utils import (
     annotate_support,
