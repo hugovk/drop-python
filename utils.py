@@ -61,6 +61,7 @@ EXCLUDED_PACKAGES = {
     "sklearn",
     "simplegeneric",
     "tensorflow-tensorboard",
+    "ujson",
 }
 
 SESSION = requests.Session()
