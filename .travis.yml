@@ -1,13 +1,10 @@
 language: python
 cache: pip
-dist: xenial
 
-# Supported CPython versions:
-# https://en.wikipedia.org/wiki/CPython#Version_history
 python:
  - 3.6
  - 3.7
- - 3.8-dev
+ - 3.8
 
 install:
  - pip install pycodestyle pyflakes
@@ -19,8 +16,7 @@ script:
  - python test_utils.py
 
  # Static analysis
- - pyflakes .
- - pycodestyle .
+ - flake8
 
  # Test run
  - ./build.sh
