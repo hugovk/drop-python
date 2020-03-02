@@ -2,6 +2,8 @@
 node_modules
 
 # Generated files
+history.jsonl
+history.png
 results*.json
 top-pypi-packages.json
 wheel*.png
