@@ -23,7 +23,9 @@ script:
  # Test run
  - ./build.sh
 
-# History charts
+ # History charts
+ - git config remote.origin.fetch +refs/heads/*:refs/remotes/origin/*
+ - git fetch origin
  - python history_get.py -n 10
  - python history_plot.py
 
