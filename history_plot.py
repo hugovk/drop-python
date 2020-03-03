@@ -66,8 +66,14 @@ def make_chart(dates, totals):
     )
 
     # This locator puts ticks at regular intervals
-    loc = plticker.MultipleLocator(base=48.0)
+    loc = plticker.MultipleLocator(base=50)
     ax.xaxis.set_major_locator(loc)
+    loc = plticker.MultipleLocator(base=60)
+    ax.yaxis.set_major_locator(loc)
+
+    plt.suptitle("Dropped Python versions")
+    plt.title("By the top 360 packages downloaded from PyPI", fontsize=10)
+    plt.ylabel("Packages")
 
     outfile = "history.png"
     print(colored(outfile, "green"))
