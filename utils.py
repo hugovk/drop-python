@@ -42,6 +42,7 @@ EXCLUDED_PACKAGES = {
     "unittest2",
     # deprecated
     "BeautifulSoup",
+    "boto",
     "bs4",
     "distribute",
     "django-social-auth",
