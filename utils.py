@@ -46,6 +46,7 @@ EXCLUDED_PACKAGES = {
     "bs4",
     "distribute",
     "django-social-auth",
+    "gitdb2",
     "google-gax",
     "jws",
     "letsencrypt",
