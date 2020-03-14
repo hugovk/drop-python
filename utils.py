@@ -60,6 +60,7 @@ EXCLUDED_PACKAGES = {
     "retrying",
     "sklearn",
     "simplegeneric",
+    "smmap2",
     "tensorflow-tensorboard",
 }
 
