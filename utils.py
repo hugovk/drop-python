@@ -39,6 +39,7 @@ EXCLUDED_PACKAGES = {
     "subprocess32",
     "traceback2",
     "typing",
+    "unicodecsv",
     "unittest2",
     # deprecated
     "BeautifulSoup",
