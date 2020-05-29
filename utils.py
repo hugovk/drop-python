@@ -41,6 +41,7 @@ EXCLUDED_PACKAGES = {
     "typing",
     "unicodecsv",
     "unittest2",
+    "zipp",
     # deprecated
     "BeautifulSoup",
     "boto",
