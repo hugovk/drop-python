@@ -21,6 +21,12 @@ from termcolor import colored  # pip install termcolor
 
 from history_get import load_jsonlines
 
+EOL = {
+    "2.7": "2020-01-01",
+    "3.4": "2019-03-18",
+    "3.5": "2020-09-13",
+}
+
 
 def dopplr(name):
     """
@@ -47,9 +53,19 @@ def make_chart(dates, totals):
     fig, ax = plt.subplots()
 
     print("Plot...")
-    for k, v in totals.items():
-        print(k)
-        ax.plot(dates, v, label=k, color=dopplr(k))
+    for version, v in totals.items():
+        print(version)
+
+        if version in EOL and EOL[version] in dates:
+            # Add a vertical line to zero at EOL
+            eol_pos = dates.index(EOL[version])
+            # dates.insert(eol_pos, EOL[version])
+            totals[version][eol_pos] = 0
+            # breakpoint()
+
+        ax.plot(dates, v, label=version, color=dopplr(version))
+
+    ax.set_ylim(ymin=0, ymax=360)
 
     plt.xticks(rotation=90)
 
