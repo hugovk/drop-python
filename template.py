@@ -87,6 +87,7 @@ set([1, 2, 3])  # This can be replaced...
                     <li><a href="https://docs.python.org/3/whatsnew/3.6.html">f-strings in 3.6!</a></li>
     """,  # noqa: E501
     },
+    "3.6": {"template_eol": "23 December 2020", "reasons": "<li>TODO</li>"},
 }
 
 REASONS = """
