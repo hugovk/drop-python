@@ -1,11 +1,19 @@
 language: python
-cache: pip
+
+cache:
+  pip: true
+  directories:
+    - "$HOME/.npm"
+    - "$HOME/.nvm"
 
 python:
  - 3.6
  - 3.7
  - 3.8
  - 3.9-dev
+
+before_install:
+  - nvm install 14
 
 install:
  - pip install flake8
