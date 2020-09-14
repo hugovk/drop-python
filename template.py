@@ -82,7 +82,7 @@ set([1, 2, 3])  # This can be replaced...
     },
     "3.4": {"template_eol": "16 March 2019", "reasons": "<li>It's EOL</li>"},
     "3.5": {
-        "template_eol": "13 September 2020",
+        "template_eol": "30 September 2020",
         "reasons": """
                     <li><a href="https://docs.python.org/3/whatsnew/3.6.html">f-strings in 3.6!</a></li>
     """,  # noqa: E501
