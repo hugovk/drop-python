@@ -58,6 +58,7 @@ EXCLUDED_PACKAGES = {
     "nose",
     "oauth2client",
     "pep8",
+    "py",
     "pycrypto",
     "raven",
     "retrying",
