@@ -39,6 +39,7 @@ EXCLUDED_PACKAGES = {
     "subprocess32",
     "traceback2",
     "typing",
+    "typing-extensions",
     "unicodecsv",
     "unittest2",
     "zipp",
