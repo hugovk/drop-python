@@ -74,7 +74,7 @@ class TestClassifiersSupport(unittest.TestCase):
         has_support = utils.classifiers_support(classifiers, "2.6")
 
         # Assert
-        self.assertEqual(has_support, "maybe")
+        self.assertEqual(has_support, "no")
 
     def test_maybe_support_or_any_major_minor(self):
         # Arrange

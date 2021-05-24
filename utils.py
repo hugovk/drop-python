@@ -104,7 +104,6 @@ def classifiers_support(classifiers, version):
     """Do these classifiers support this Python version?"""
     desired_classifier = CLASSIFIER.format(version)
     major, minor = version.split(".")
-    some_version_listed = False
 
     # Explicit major.minor support
     if desired_classifier in classifiers:
@@ -114,17 +113,25 @@ def classifiers_support(classifiers, version):
     # Only report "no" when at least one other major.minor version is explicitly
     # supported (but not the desired one).
     # ie. major and major.other present, but major.minor is missing.
-    for classifier in classifiers:
-        if f"{major}." in classifier:
-            return "no"
-        if "Programming Language :: Python ::" in classifier:
-            some_version_listed = True
+    if any(f"{major}." in c for c in classifiers):
+        return "no"
 
-    if major == "2" and "Programming Language :: Python" in classifiers:
+    python_any = any("Programming Language :: Python ::" in c for c in classifiers)
+    python = "Programming Language :: Python" in classifiers
+    # python2 = "Programming Language :: Python :: 2" in classifiers
+    python3 = "Programming Language :: Python :: 3" in classifiers
+    python2x = any("Programming Language :: Python :: 2." in c for c in classifiers)
+    python3x = any("Programming Language :: Python :: 3." in c for c in classifiers)
+
+    # No major.minor listed
+    if major == "2" and python and python3 and not python3x:
         return "maybe"
 
+    if major == "2" and python3x and not python2x:
+        return "no"
+
     # We have at least some version listed, but not even this major
-    if some_version_listed and CLASSIFIER.format(major) not in classifiers:
+    if python_any and CLASSIFIER.format(major) not in classifiers:
         return "no"
 
     # Otherwise?
