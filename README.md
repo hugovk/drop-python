@@ -23,11 +23,11 @@ optional arguments:
 
 For example:
 ```bash
-$ python generate.py
+$ python3 generate.py
 
-$ python generate.py -v 3.2 -n 100
+$ python3 generate.py -v 3.2 -n 100
 
-$ python generate.py -v 2.6
+$ python3 generate.py -v 2.6
 ```
 See also build.sh.
 
@@ -38,14 +38,6 @@ Gets list of packages from [Top PyPI Packages](https://hugovk.github.io/top-pypi
 In another terminal:
 ```bash
 $ python3 -m http.server 8000
-
-# Or:
-
-$ python2 -m SimpleHTTPServer 8000
-
-# Or:
-
-python -m $(python -c 'import sys; print("http.server" if sys.version_info[:2] > (2, 7) else "SimpleHTTPServer")') 8000
 ```
 
 Then visit http://localhost:8000/
