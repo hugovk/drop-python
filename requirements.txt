@@ -1,2 +1,7 @@
+gitpython
+jsonlines
+matplotlib
 pytz
 requests
+termcolor
+tqdm
