@@ -85,7 +85,7 @@ def add_fraction(wheel, packages, total, version):
     packages_with_wheels.text = f"{wheel_packages}"
 
     title = et.SubElement(packages_with_wheels, "title")
-    percentage = "{:.0%}".format(wheel_packages / float(total))
+    percentage = f"{wheel_packages / float(total):.0%}"
     title.text = percentage
 
     # Dividing line
