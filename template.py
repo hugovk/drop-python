@@ -1,5 +1,6 @@
 import argparse
 import datetime
+import json
 import os
 from string import Template
 
@@ -58,7 +59,6 @@ set([1, 2, 3])  # This can be replaced...
 """,  # noqa: E501
     },
     "2.7": {
-        "template_eol": "1 January 2020",
         "reasons": """
                     <li><a href="https://python3statement.org/">Sunsetting Python 2 support</a></li>
                     <li><a href="https://whypy3.com/">Why Python 3?</a></li>
@@ -72,21 +72,19 @@ set([1, 2, 3])  # This can be replaced...
     "3.1": {"template_eol": "9 April 2012"},
     "3.2": {"template_eol": "27 February 2016"},
     "3.3": {
-        "template_eol": "29 September 2017",
         "reasons": """
                     <li><a href="https://github.com/pypa/pip/issues/3796">pip 10 deprecated Python 3.3 support, pip 11 won't support it</a></li>
                     <li><a href="https://github.com/pypa/pip/issues/3796">Very little PyPI traffic (June 2016)</a></li>
                     <li><a href="https://medium.com/@hugovk/python-version-share-over-time-cf4498822650">Virtually no PyPI traffic (June 2018)</a></li>
 """,  # noqa: E501
     },
-    "3.4": {"template_eol": "16 March 2019", "reasons": "<li>It's EOL</li>"},
+    "3.4": {"reasons": "<li>It's EOL</li>"},
     "3.5": {
-        "template_eol": "30 September 2020",
         "reasons": """
                     <li><a href="https://docs.python.org/3/whatsnew/3.6.html">f-strings in 3.6!</a></li>
     """,  # noqa: E501
     },
-    "3.6": {"template_eol": "23 December 2020", "reasons": "<li>TODO</li>"},
+    "3.6": {"reasons": "<li>TODO</li>"},
 }
 
 REASONS = """
@@ -97,6 +95,13 @@ REASONS = """
                     <li><a href="https://medium.com/@hugovk/python-version-share-over-time-cf4498822650">Virtually no PyPI traffic (June 2018)</a></li>
 
 """  # noqa: E501
+
+
+def get_eols() -> dict:
+    with open("python-eol.json") as data_file:
+        data = json.load(data_file)
+
+    return {version["cycle"]: version["eol"] for version in data}
 
 
 if __name__ == "__main__":
@@ -112,6 +117,8 @@ if __name__ == "__main__":
     )
     args = parser.parse_args()
 
+    eols = get_eols()
+
     # Open the file
     with open("template/index.html") as infile:
         # Read it
@@ -126,9 +133,25 @@ if __name__ == "__main__":
             next_minor = int(minor) + 1
             next_version = f"{major}.{next_minor}"
             substitutions = SUBSTITUTIONS[version]
+
+            try:
+                eol_date = eols[version]
+            except KeyError:
+                eol_date = substitutions["template_eol"]
+
+            try:
+                # Convert "1 January 2020" string to datetime
+                eol_datetime = datetime.datetime.strptime(eol_date, "%d %B %Y")
+            except ValueError:
+                # Convert "2020-01-01" string to datetime
+                eol_datetime = datetime.datetime.strptime(eol_date, "%Y-%m-%d")
+
+                # Convert to "1 January 2020" string
+                eol_date = f"{eol_datetime:%-d %B %Y}"
+
             d = {
                 "template_version": version,
-                "template_eol": substitutions["template_eol"],
+                "template_eol": eol_date,
                 "template_major": major,
                 "template_minor": minor,
                 "template_next_minor": next_minor,
@@ -141,19 +164,8 @@ if __name__ == "__main__":
             # Do the substitution
             result = src.safe_substitute(d)
 
-            try:
-                # 1 January 2020
-                eol = datetime.datetime.strptime(
-                    substitutions["template_eol"], "%d %B %Y"
-                )
-            except ValueError:
-                # 2020-01-01
-                eol = datetime.datetime.strptime(
-                    substitutions["template_eol"], "%Y-%m-%d"
-                )
-
             # EOL in the future?
-            if now < eol:
+            if now < eol_datetime:
                 result = result.replace("about time", "soon time")
                 result = result.replace(" reached the ", " reaches the ")
             # print(result)
