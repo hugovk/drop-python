@@ -1,5 +1,5 @@
 import argparse
-import datetime
+import datetime as dt
 import json
 import os
 from string import Template
@@ -124,7 +124,7 @@ if __name__ == "__main__":
         # Read it
         src = Template(infile.read())
 
-        now = datetime.datetime.utcnow()
+        now = dt.datetime.utcnow()
         for version in args.version:
 
             # Document data
@@ -141,10 +141,10 @@ if __name__ == "__main__":
 
             try:
                 # Convert "1 January 2020" string to datetime
-                eol_datetime = datetime.datetime.strptime(eol_date, "%d %B %Y")
+                eol_datetime = dt.datetime.strptime(eol_date, "%d %B %Y")
             except ValueError:
                 # Convert "2020-01-01" string to datetime
-                eol_datetime = datetime.datetime.strptime(eol_date, "%Y-%m-%d")
+                eol_datetime = dt.datetime.strptime(eol_date, "%Y-%m-%d")
 
                 # Convert to "1 January 2020" string
                 eol_date = f"{eol_datetime:%-d %B %Y}"

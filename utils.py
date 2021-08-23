@@ -1,4 +1,4 @@
-import datetime
+import datetime as dt
 import json
 import os
 
@@ -213,7 +213,7 @@ def remove_irrelevant_packages(packages, limit):
 
 
 def save_to_file(packages, file_name):
-    now = datetime.datetime.utcnow().replace(tzinfo=pytz.utc)
+    now = dt.datetime.utcnow().replace(tzinfo=pytz.utc)
     with open(file_name, "w") as f:
         f.write(
             json.dumps(
