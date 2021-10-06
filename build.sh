@@ -6,6 +6,9 @@ set -e
 # Info
 python3 --version
 
+# Install dependencies
+python3 -m pip install requirements.txt
+
 # Update
 git pull origin master
 
