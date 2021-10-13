@@ -138,14 +138,14 @@ def generate_svg_wheel(packages, total, versions):
             svg.write(HEADERS)
             svg.write(et.tostring(wheel))
 
-        # Install with: npm install svgexport -g
+        # Install with: npm install svgexport
         os.system(
-            "/usr/local/bin/svgexport {svg} {png} 32:32".format(
+            "./node_modules/.bin/svgexport {svg} {png} 32:32".format(
                 svg=wheel_svg, png=wheel_png
             )
         )
         os.system(
-            "/usr/local/bin/svgexport {svg} {png} 630:630".format(
+            "./node_modules/.bin/svgexport {svg} {png} 630:630".format(
                 svg=wheel_svg, png=wheel_og_png
             )
         )
