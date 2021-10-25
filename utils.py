@@ -4,7 +4,7 @@ import os
 
 import pytz
 import requests
-from pip._vendor.packaging import specifiers
+from packaging import specifiers
 
 BASE_URL = "https://pypi.org/pypi"
 
@@ -12,10 +12,13 @@ EXCLUDED_PACKAGES = {
     # backports
     "argparse",
     "backports-abc",
+    "backports-entry-points-selectable",
     "backports-functools-lru-cache",
     "backports-shutil-get-terminal-size",
     "backports-ssl-match-hostname",
+    "backports-tempfile",
     "backports-weakref",
+    "backports-zoneinfo",
     "configparser",
     "contextlib2",
     "enum-compat",
