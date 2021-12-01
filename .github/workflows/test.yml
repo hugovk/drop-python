@@ -24,6 +24,9 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
           cache: pip
+          cache-dependency-path: |
+            .github/workflows/test.yml
+            requirements.txt
 
       - name: Set up node
         uses: actions/setup-node@v2
