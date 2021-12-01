@@ -90,6 +90,12 @@ set([1, 2, 3])  # This can be replaced...
                     <li><a href="https://docs.python.org/3/whatsnew/3.7.html">And more!</a></li>
     """  # noqa: E501
     },
+    "3.7": {
+        "reasons": """
+                    <li><a href="https://github.com/jugmac00/python-version-cheat-sheet#python-38"><strike>Walrus operator</strike></a></li>
+                    <li><a href="https://docs.python.org/3/whatsnew/3.8.html">And more!</a></li>
+    """  # noqa: E501
+    },
 }
 
 REASONS = """
