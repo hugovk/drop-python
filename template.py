@@ -84,7 +84,12 @@ set([1, 2, 3])  # This can be replaced...
                     <li><a href="https://docs.python.org/3/whatsnew/3.6.html">f-strings in 3.6!</a></li>
     """,  # noqa: E501
     },
-    "3.6": {"reasons": "<li>TODO</li>"},
+    "3.6": {
+        "reasons": """
+                    <li><a href="https://github.com/jugmac00/python-version-cheat-sheet#python-37">Future typing, guaranteed dict sort order, <pre>breakpoint()</pre>, data classes</a></li>
+                    <li><a href="https://docs.python.org/3/whatsnew/3.7.html">And more!</a></li>
+    """  # noqa: E501
+    },
 }
 
 REASONS = """
@@ -111,7 +116,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "-v",
         "--version",
-        default=["2.6", "3.2", "3.3"],
+        default=["2.6", "3.2", "3.3", "3.4", "3.5", "3.6"],
         nargs="+",
         help="Python version or versions to check",
     )
