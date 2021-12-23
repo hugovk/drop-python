@@ -6,13 +6,13 @@ env:
   FORCE_COLOR: 1
 
 jobs:
-  build:
+  test:
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
         python-version: ["pypy-3.8", "3.7", "3.8", "3.9", "3.10"]
-        os: [ubuntu-20.04]
+        os: [ubuntu-latest]
 
     steps:
       - uses: actions/checkout@v2
@@ -32,6 +32,8 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 14
+          cache: 'npm'
+          cache-dependency-path: ".github/workflows/test.yml"
 
       - name: Install dependencies
         run: |
