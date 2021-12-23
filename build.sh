@@ -10,7 +10,7 @@ python3 --version
 python3 -m pip install -r requirements.txt
 
 # Update
-git pull origin master
+git pull origin main
 
 # Fetch fresh copy of top packages
 wget https://hugovk.github.io/top-pypi-packages/top-pypi-packages-30-days.min.json -O top-pypi-packages.json
