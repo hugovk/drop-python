@@ -86,7 +86,10 @@ set([1, 2, 3])  # This can be replaced...
     },
     "3.6": {
         "reasons": """
-                    <li><a href="https://github.com/jugmac00/python-version-cheat-sheet#python-37">Future typing, guaranteed dict sort order, <pre>breakpoint()</pre>, data classes</a></li>
+                    <li><a href="https://github.com/jugmac00/python-version-cheat-sheet#python-37">Future typing</a></li>
+                    <li><a href="https://github.com/jugmac00/python-version-cheat-sheet#python-37">Guaranteed dict sort order</a></li>
+                    <li><a href="https://github.com/jugmac00/python-version-cheat-sheet#python-37"><pre>breakpoint()</pre></a></li>
+                    <li><a href="https://github.com/jugmac00/python-version-cheat-sheet#python-37">Data classes</a></li>
                     <li><a href="https://docs.python.org/3/whatsnew/3.7.html">And more!</a></li>
     """  # noqa: E501
     },
