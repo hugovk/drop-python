@@ -23,4 +23,4 @@ git commit -m "Deploy $REV" # Step 8
 
 git push --force origin gh-pages # Step 9
 
-git checkout master # Step 10
+git checkout main # Step 10
