@@ -62,16 +62,16 @@ def angles(index, total):
     start = index * TAU / total
     stop = (index + 1) * TAU / total
 
-    return (start - TAU / 4, stop - TAU / 4)
+    return start - TAU / 4, stop - TAU / 4
 
 
 def add_fraction(wheel, packages, total, version):
     text_attributes = {
+        "class": "wheel-text",
         "text-anchor": "middle",
         "dominant-baseline": "central",
         "font-size": str(2 * OFFSET),
         "font-family": '"Helvetica Neue",Helvetica,Arial,sans-serif',
-        "fill": "#333333",
     }
 
     # Packages with some sort of wheel
@@ -96,7 +96,7 @@ def add_fraction(wheel, packages, total, version):
         y1=str(CENTER),
         x2=str(CENTER + FRACTION_LINE // 2),
         y2=str(CENTER),
-        attrib={"stroke": "#333333", "stroke-width": "2"},
+        attrib={"class": "wheel-line", "stroke-width": "2"},
     )
 
     # Total packages
