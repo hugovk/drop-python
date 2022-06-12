@@ -29,7 +29,7 @@ $ python3 generate.py -v 3.2 -n 100
 
 $ python3 generate.py -v 2.6
 ```
-See also build.sh.
+See also `build.sh`.
 
 Gets list of packages from [Top PyPI Packages](https://hugovk.github.io/top-pypi-packages/).
 
@@ -44,7 +44,7 @@ Then visit http://localhost:8000/
 
 ## How to deploy
 
-Run crontas.sh hourly from cron.
+Make sure we're on `main` and run `crontask.sh` hourly from cron.
 
 ## Thanks
 
