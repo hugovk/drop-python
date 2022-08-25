@@ -2,7 +2,6 @@ gitpython
 jsonlines
 matplotlib
 packaging
-pytz
 requests
 termcolor
 tqdm
