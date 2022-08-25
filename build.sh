@@ -18,6 +18,10 @@ wget https://hugovk.github.io/top-pypi-packages/top-pypi-packages-30-days.min.js
 # Fetch Python EOL dates
 wget https://endoflife.date/api/python.json -O python-eol.json
 
+# TEMP workaround
+# https://github.com/nodejs/node/issues/43132#issuecomment-1130503287
+export OPENSSL_CONF=/dev/null
+
 # Generate the files
 python3 generate.py --version 2.{0,1,2,3,4,5,6,7} 3.{0,1,2,3,4,5,6,7}
 
