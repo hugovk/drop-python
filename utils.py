@@ -154,7 +154,6 @@ def annotate_support(packages, versions=["2.6"]):
         data = response.json()
 
         for version in versions:
-
             # Init
             package[version] = {}
 

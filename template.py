@@ -140,7 +140,6 @@ if __name__ == "__main__":
 
         now = dt.datetime.utcnow()
         for version in args.version:
-
             # Document data
             print(version)
             major, minor = version.split(".")

@@ -95,7 +95,6 @@ def main():
         commits = commits[: args.number]
     commits.reverse()  # oldest first
     for commit in tqdm(commits):
-
         if str(commit.authored_datetime) in old_dates:
             continue
 

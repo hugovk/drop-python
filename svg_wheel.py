@@ -111,7 +111,6 @@ def add_fraction(wheel, packages, total, version):
 
 def generate_svg_wheel(packages, total, versions):
     for version in versions:
-
         wheel = et.Element(
             "svg",
             viewBox="0 0 {0} {0}".format(2 * CENTER),
@@ -120,7 +119,6 @@ def generate_svg_wheel(packages, total, versions):
         )
 
         for index, result in enumerate(packages):
-
             start, stop = angles(index, total)
             sector = add_annular_sector(
                 wheel, start=start, stop=stop, style_class=result[version]["css_class"]
