@@ -125,7 +125,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "-v",
         "--version",
-        default=["2.6", "3.2", "3.3", "3.4", "3.5", "3.6"],
+        default=["2.6", "3.2", "3.3", "3.4", "3.5", "3.6", "3.7"],
         nargs="+",
         help="Python version or versions to check",
     )

@@ -11,7 +11,7 @@ python3 history_get.py  # creates/updates history.jsonl
 python3 history_plot.py && open history.png
 
 # Subset
-python3 history_plot.py -v 2.6 2.7 3.3 3.4 3.5 && open history.png
+python3 history_plot.py -v 2.6 2.7 3.3 3.4 3.5 3.6 3.7 && open history.png
 """
 import argparse
 import hashlib
@@ -25,6 +25,8 @@ EOL = {
     "2.7": "2020-01-01",
     "3.4": "2019-03-18",
     "3.5": "2020-09-30",
+    "3.6": "2021-12-23",
+    "3.7": "2023-06-27",
 }
 
 
