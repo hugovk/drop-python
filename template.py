@@ -99,6 +99,12 @@ set([1, 2, 3])  # This can be replaced...
                     <li><a href="https://docs.python.org/3/whatsnew/3.8.html">And more!</a></li>
     """  # noqa: E501
     },
+    "3.8": {
+        "reasons": """
+                    <li><a href="https://github.com/jugmac00/python-version-cheat-sheet#python-39">use <code>list</code> and <code>dict</code> for type annotations</a></li>
+                    <li><a href="https://docs.python.org/3/whatsnew/3.9.html">And more!</a></li>
+    """  # noqa: E501
+    },
 }
 
 REASONS = """
