@@ -113,7 +113,7 @@ def generate_svg_wheel(packages, total, versions):
     for version in versions:
         wheel = et.Element(
             "svg",
-            viewBox="0 0 {0} {0}".format(2 * CENTER),
+            viewBox=f"0 0 {2 * CENTER} {2 * CENTER}",
             version="1.1",
             xmlns="http://www.w3.org/2000/svg",
         )
@@ -124,7 +124,7 @@ def generate_svg_wheel(packages, total, versions):
                 wheel, start=start, stop=stop, style_class=result[version]["css_class"]
             )
             title = et.SubElement(sector, "title")
-            title.text = "{} {}".format(result["name"], result[version]["icon"])
+            title.text = f"{result['name']} {result[version]['icon']}"
 
         add_fraction(wheel, packages, total, version)
 
