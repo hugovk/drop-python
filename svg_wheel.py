@@ -80,7 +80,11 @@ def add_fraction(wheel, packages, total, version):
     )
 
     packages_with_wheels = et.SubElement(
-        wheel, "text", x=str(CENTER), y=str(CENTER - OFFSET), attrib=text_attributes
+        wheel,
+        "text",
+        x=str(CENTER),
+        y=str(CENTER - OFFSET),
+        attrib=text_attributes,
     )
     packages_with_wheels.text = f"{wheel_packages}"
 
@@ -101,7 +105,11 @@ def add_fraction(wheel, packages, total, version):
 
     # Total packages
     total_packages = et.SubElement(
-        wheel, "text", x=str(CENTER), y=str(CENTER + OFFSET), attrib=text_attributes
+        wheel,
+        "text",
+        x=str(CENTER),
+        y=str(CENTER + OFFSET),
+        attrib=text_attributes,
     )
     total_packages.text = f"{total}"
 
