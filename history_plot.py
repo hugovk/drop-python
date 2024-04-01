@@ -13,6 +13,7 @@ python3 history_plot.py && open history.png
 # Subset
 python3 history_plot.py -v 2.6 2.7 3.3 3.4 3.5 3.6 3.7 && open history.png
 """
+
 import argparse
 import hashlib
 from pprint import pprint  # noqa: F401

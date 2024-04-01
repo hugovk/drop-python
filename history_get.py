@@ -8,6 +8,7 @@ Usage:
 pip install -r history-requirements.txt
 python3 history_get.py  # creates/updates history.jsonl
 """
+
 import argparse
 import json
 
