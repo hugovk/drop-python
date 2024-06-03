@@ -70,7 +70,7 @@ def make_chart(dates, totals):
 
     ax.set_ylim(ymin=0, ymax=360)
 
-    plt.xticks(rotation=90)
+    plt.xticks(fontsize=8, rotation=90)
 
     # Tweak spacing to prevent clipping of tick-labels
     plt.subplots_adjust(bottom=0.2)
