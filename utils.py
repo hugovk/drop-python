@@ -69,6 +69,8 @@ EXCLUDED_PACKAGES = {
     "simplegeneric",
     "smmap2",
     "tensorflow-tensorboard",
+    # deleted after violating PyPI AUP
+    "pypular",
 }
 
 SESSION = requests.Session()
