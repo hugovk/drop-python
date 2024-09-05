@@ -5,6 +5,7 @@ node_modules
 history.jsonl
 history.png
 python-eol.json
+requests-cache.sqlite
 results*.json
 top-pypi-packages.json
 wheel*.png

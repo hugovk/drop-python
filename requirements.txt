@@ -2,6 +2,6 @@ gitpython
 jsonlines
 matplotlib
 packaging
-requests
+requests-cache
 termcolor
 tqdm

@@ -2,7 +2,7 @@ import datetime as dt
 import json
 import os
 
-import requests
+import requests_cache
 from packaging import specifiers
 from zoneinfo import ZoneInfo  # Python 3.9+
 
@@ -73,7 +73,8 @@ EXCLUDED_PACKAGES = {
     "pypular",
 }
 
-SESSION = requests.Session()
+# Keep responses for one hour
+SESSION = requests_cache.CachedSession("requests-cache", expire_after=60 * 60)
 
 CLASSIFIER = "Programming Language :: Python :: {}"
 
