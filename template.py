@@ -66,7 +66,7 @@ set([1, 2, 3])  # This can be replaced...
 """,  # noqa: E501
         "remove": """
                     <p>Follow this guide: <a href="https://python3statement.org/practicalities/">https://python3statement.org/practicalities/</a>
-""",  # noqa: E501
+""",
     },
     "3.0": {"template_eol": "27 June 2009"},
     "3.1": {"template_eol": "9 April 2012"},

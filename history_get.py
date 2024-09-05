@@ -16,7 +16,7 @@ import git  # pip install gitpython
 import jsonlines  # pip install jsonlines
 from tqdm import tqdm  # pip install tqdm
 
-# from pprint import pprint  # noqa: F401
+# from pprint import pprint
 
 
 def load_from_file(file_name):
@@ -37,7 +37,7 @@ def do_json_file():
 def do_json(data):
     packages = data["data"]
 
-    drop_totals = dict()
+    drop_totals = {}
     for package in packages:
         for key, value in package.items():
             if key in ["downloads", "name", "value"]:
@@ -53,7 +53,7 @@ def do_json(data):
 
 def load_jsonlines(file_name):
     with jsonlines.open(file_name) as reader:
-        lines = [line for line in reader]
+        lines = list(reader)
     return lines
 
 

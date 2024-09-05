@@ -141,7 +141,7 @@ def main():
 
     print("Prep data...")
     dates = []
-    totals = dict()
+    totals = {}
     for line in lines:
         dates.append(line["date"])
 
