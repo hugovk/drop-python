@@ -24,7 +24,6 @@ PADDING = 10
 OUTER_RADIUS = 180
 INNER_RADIUS = OUTER_RADIUS / 2
 CENTER = PADDING + OUTER_RADIUS
-TAU = 2 * math.pi  # The angle, in radians, of a full circle.
 
 
 def annular_sector_path(start, stop):
@@ -58,10 +57,10 @@ def add_annular_sector(wheel, start, stop, style_class):
 
 
 def angles(index, total):
-    start = index * TAU / total
-    stop = (index + 1) * TAU / total
+    start = index * math.tau / total
+    stop = (index + 1) * math.tau / total
 
-    return start - TAU / 4, stop - TAU / 4
+    return start - math.tau / 4, stop - math.tau / 4
 
 
 def add_fraction(wheel, packages, total, version):
