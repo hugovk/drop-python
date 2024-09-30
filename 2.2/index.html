@@ -2,7 +2,7 @@
 <html lang="en" ng-app="app">
 <head>
     <meta charset="utf-8">
-    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.2/gh-fork-ribbon.min.css" />
     <link rel="icon" href="favicon.ico">
     <link rel="icon" href="wheel.png">
@@ -21,7 +21,7 @@
         <div class="row">
             <div class="col-sm-6">
             <h1 id="drop"><a href="..">Drop Python</a> 2.2</h1>
-                <object data="wheel.svg" type="image/svg+xml" width="380" height="380" class="center-block"></object>
+                <object data="wheel.svg" type="image/svg+xml" width="380" height="380" class="d-block mx-auto"></object>
                 <h2 id="what">What is this about?</h2>
                 <p>Python 2.2 reached the <a href="https://en.wikipedia.org/wiki/History_of_Python#Table_of_versions">end of its life on 30 May 2003</a>. It's about time to drop support for Python 2.2.</p>
                 <h3 id="reasons">Reasons for dropping</h3>
@@ -39,7 +39,7 @@
                 <p>This site shows the top 360 most-downloaded packages on <a href="https://pypi.org/">PyPI</a> (<a href="https://hugovk.github.io/top-pypi-packages/">source</a>) showing which have dropped support for Python 2.2.</p>
                 <ul>
                     <li><span class="text-success">Green</span> packages have dropped Python 2.2,</li>
-                    <li><span class="text-muted">White</span> packages may still support Python 2.2.</li>
+                    <li><span class="text-default">White</span> packages may still support Python 2.2.</li>
                 </ul>
                 <p>Packages that are backports (for example, enum34) or known to be deprecated are not included (for example, distribute). If your package is incorrectly listed, please <a href="https://github.com/hugovk/drop-python/issues/">create a ticket</a>.</p>
                 <p>This is not an official website, just a nice visual way to measure progress. To see the authoritative guide on wheels and other aspects of python packaging, see the <a href="https://packaging.python.org">Python Packaging User Guide</a>.</p>

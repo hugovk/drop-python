@@ -44,6 +44,10 @@ footer {
     box-sizing: content-box;
 }
 
+.text-default {
+    color: #777;
+}
+
 @media (prefers-color-scheme: dark) {
   body {
     color: #ccc;
