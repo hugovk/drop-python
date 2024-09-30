@@ -44,7 +44,7 @@ Then visit http://localhost:8000/
 
 ## How to deploy
 
-Make sure we're on `main` and run `crontask.sh` hourly from cron.
+Make sure we're on `main` and run `crontask.sh` daily from cron.
 
 ## Thanks
 
