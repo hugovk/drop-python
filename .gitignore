@@ -1,5 +1,6 @@
 *.pyc
 node_modules
+requests-cache.sqlite
 
 # Build dir
 build
