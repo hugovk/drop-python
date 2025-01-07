@@ -1,10 +1,10 @@
 import datetime as dt
 import json
 import os
+from zoneinfo import ZoneInfo
 
 import requests_cache
 from packaging import specifiers
-from zoneinfo import ZoneInfo  # Python 3.9+
 
 BASE_URL = "https://pypi.org/pypi"
 
