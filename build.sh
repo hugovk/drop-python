@@ -23,16 +23,16 @@ wget https://endoflife.date/api/python.json -O python-eol.json
 export OPENSSL_CONF=/dev/null
 
 # Generate the files
-python3 generate.py --version 2.{0,1,2,3,4,5,6,7} 3.{0,1,2,3,4,5,6,7,8}
+python3 generate.py --version 2.{0,1,2,3,4,5,6,7} 3.{0,1,2,3,4,5,6,7,8,9}
 
 # Create index.html files from the template
-python3 template.py --version 2.{0,1,2,3,4,5,6,7} 3.{0,1,2,3,4,5,6,7,8}
+python3 template.py --version 2.{0,1,2,3,4,5,6,7} 3.{0,1,2,3,4,5,6,7,8,9}
 
 # Make output directory, don't fail if it exists
 mkdir -p build
 
 # Copy to output directory
-cp -R {2.{0,1,2,3,4,5,6,7},3.{0,1,2,3,4,5,6,7,8},all.html,index.html,results.json,style.css,wheel.css} build
+cp -R {2.{0,1,2,3,4,5,6,7},3.{0,1,2,3,4,5,6,7,8,9},all.html,index.html,results.json,style.css,wheel.css} build
 
 # Remove templated index.html files
-rm {2.{0,1,2,3,4,5,6,7},3.{0,1,2,3,4,5,6,7,8}}/index.html
+rm {2.{0,1,2,3,4,5,6,7},3.{0,1,2,3,4,5,6,7,8,9}}/index.html
