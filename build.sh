@@ -13,7 +13,7 @@ python3 -m pip install -r requirements.txt
 git pull origin main
 
 # Fetch fresh copy of top packages
-wget https://hugovk.github.io/top-pypi-packages/top-pypi-packages-30-days.min.json -O top-pypi-packages.json
+wget https://hugovk.github.io/top-pypi-packages/top-pypi-packages.min.json -O top-pypi-packages.json
 
 # Fetch Python EOL dates
 wget https://endoflife.date/api/python.json -O python-eol.json
