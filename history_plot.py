@@ -21,14 +21,7 @@ from pprint import pprint  # noqa: F401
 from termcolor import colored  # pip install termcolor
 
 from history_get import load_jsonlines
-
-EOL = {
-    "2.7": "2020-01-01",
-    "3.4": "2019-03-18",
-    "3.5": "2020-09-30",
-    "3.6": "2021-12-23",
-    "3.7": "2023-06-27",
-}
+from template import get_eols
 
 
 def dopplr(name):
@@ -56,13 +49,14 @@ def make_chart(dates, totals):
     fig, ax = plt.subplots()
 
     print("Plot...")
+    eol = get_eols()
     for version, v in totals.items():
         print(version)
 
-        if version in EOL and EOL[version] in dates:
+        if version in eol and eol[version] in dates:
             # Add a vertical line to zero at EOL
-            eol_pos = dates.index(EOL[version])
-            # dates.insert(eol_pos, EOL[version])
+            eol_pos = dates.index(eol[version])
+            # dates.insert(eol_pos, eol[version])
             totals[version][eol_pos] = 0
             # breakpoint()
 
@@ -77,7 +71,7 @@ def make_chart(dates, totals):
 
     # Shrink current axis by 20% so legend is outside chart
     box = ax.get_position()
-    ax.set_position([box.x0, box.y0, box.width * 0.9, box.height])
+    ax.set_position((box.x0, box.y0, box.width * 0.9, box.height))
 
     # Put a legend to the right of the current axis
     ax.legend(
