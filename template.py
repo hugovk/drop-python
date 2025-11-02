@@ -111,6 +111,12 @@ set([1, 2, 3])  # This can be replaced...
                     <li><a href="https://docs.python.org/3/whatsnew/3.9.html">And more!</a></li>
     """  # noqa: E501
     },
+    "3.10": {
+        "reasons": """
+                    <li><a href="https://github.com/jugmac00/python-version-cheat-sheet#python-311"><code>tomllib</code> in the stdlib, exception groups and except*</a></li>
+                    <li><a href="https://docs.python.org/3/whatsnew/3.10.html">And more!</a></li>
+    """  # noqa: E501
+    },
 }
 
 REASONS = """
