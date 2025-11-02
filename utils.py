@@ -144,7 +144,7 @@ def classifiers_support(classifiers, version):
     return "maybe"
 
 
-def annotate_support(packages, versions=["2.6"]):
+def annotate_support(packages, versions=("2.6",)):
     print("Getting support data...")
     num_packages = len(packages)
     for index, package in enumerate(packages):
@@ -218,7 +218,7 @@ def remove_irrelevant_packages(packages, limit):
 
 
 def save_to_file(packages, file_name):
-    now = dt.datetime.utcnow().replace(tzinfo=ZoneInfo("UTC"))
+    now = dt.datetime.now(ZoneInfo("UTC"))
     with open(file_name, "w") as f:
         f.write(
             json.dumps(

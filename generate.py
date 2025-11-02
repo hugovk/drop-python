@@ -9,14 +9,7 @@ from utils import (
 )
 
 
-def main(to_chart=360, versions=["2.6"]):
-    packages = remove_irrelevant_packages(get_top_packages(), to_chart)
-    annotate_support(packages, versions)
-    save_to_file(packages, "results.json")
-    generate_svg_wheel(packages, to_chart, versions)
-
-
-if __name__ == "__main__":
+def main() -> None:
     parser = argparse.ArgumentParser(
         description="Generate", formatter_class=argparse.ArgumentDefaultsHelpFormatter
     )
@@ -32,4 +25,11 @@ if __name__ == "__main__":
     )
     args = parser.parse_args()
 
-    main(args.number, args.version)
+    packages = remove_irrelevant_packages(get_top_packages(), args.number)
+    annotate_support(packages, args.version)
+    save_to_file(packages, "results.json")
+    generate_svg_wheel(packages, args.number, args.version)
+
+
+if __name__ == "__main__":
+    main()

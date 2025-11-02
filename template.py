@@ -136,7 +136,7 @@ def get_eols() -> dict:
     return {version["cycle"]: version["eol"] for version in data}
 
 
-if __name__ == "__main__":
+def main() -> None:
     parser = argparse.ArgumentParser(
         description="Template", formatter_class=argparse.ArgumentDefaultsHelpFormatter
     )
@@ -156,7 +156,7 @@ if __name__ == "__main__":
         # Read it
         src = Template(infile.read())
 
-        now = dt.datetime.utcnow()
+        now = dt.datetime.now(dt.UTC).replace(tzinfo=None)
         for version in args.version:
             # Document data
             print(version)
@@ -207,3 +207,7 @@ if __name__ == "__main__":
             create_dir(version)
             with open(outfile, "w") as f:
                 f.write(result)
+
+
+if __name__ == "__main__":
+    main()

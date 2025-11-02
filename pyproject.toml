@@ -1,5 +1,5 @@
 [tool.black]
-target_version = [ "py39" ]
+target_version = [ "py310" ]
 
 [tool.ruff]
 fix = true
@@ -8,7 +8,7 @@ lint.select = [
   "C4",     # flake8-comprehensions
   "E",      # pycodestyle errors
   "EM",     # flake8-errmsg
-  "F",      # pyflakes errors
+  "F",      # pyflakes
   "I",      # isort
   "ICN",    # flake8-import-conventions
   "ISC",    # flake8-implicit-str-concat
