@@ -65,6 +65,7 @@ EXCLUDED_PACKAGES = {
     "pycrypto",
     "raven",
     "retrying",
+    "rsa",
     "sklearn",
     "simplegeneric",
     "smmap2",
