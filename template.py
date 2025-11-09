@@ -156,7 +156,7 @@ def main() -> None:
         # Read it
         src = Template(infile.read())
 
-        now = dt.datetime.now(dt.UTC).replace(tzinfo=None)
+        now = dt.datetime.utcnow()
         for version in args.version:
             # Document data
             print(version)

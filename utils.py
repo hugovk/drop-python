@@ -218,7 +218,7 @@ def remove_irrelevant_packages(packages, limit):
 
 
 def save_to_file(packages, file_name):
-    now = dt.datetime.now(ZoneInfo("UTC"))
+    now = dt.datetime.utcnow().replace(tzinfo=ZoneInfo("UTC"))
     with open(file_name, "w") as f:
         f.write(
             json.dumps(
