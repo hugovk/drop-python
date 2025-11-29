@@ -90,31 +90,31 @@ set([1, 2, 3])  # This can be replaced...
                     <li><a href="https://github.com/jugmac00/python-version-cheat-sheet#python-37">Guaranteed dict sort order</a></li>
                     <li><a href="https://github.com/jugmac00/python-version-cheat-sheet#python-37"><pre>breakpoint()</pre></a></li>
                     <li><a href="https://github.com/jugmac00/python-version-cheat-sheet#python-37">Data classes</a></li>
-                    <li><a href="https://docs.python.org/3/whatsnew/3.7.html">And more!</a></li>
+                    <li><a href="https://docs.python.org/3/whatsnew/$template_next_version.html">And more!</a></li>
     """  # noqa: E501
     },
     "3.7": {
         "reasons": """
                     <li><a href="https://github.com/jugmac00/python-version-cheat-sheet#python-38"><strike>Walrus operator</strike></a></li>
-                    <li><a href="https://docs.python.org/3/whatsnew/3.8.html">And more!</a></li>
+                    <li><a href="https://docs.python.org/3/whatsnew/$template_next_version.html">And more!</a></li>
     """  # noqa: E501
     },
     "3.8": {
         "reasons": """
                     <li><a href="https://github.com/jugmac00/python-version-cheat-sheet#python-39">use <code>list</code> and <code>dict</code> for type annotations</a></li>
-                    <li><a href="https://docs.python.org/3/whatsnew/3.9.html">And more!</a></li>
+                    <li><a href="https://docs.python.org/3/whatsnew/$template_next_version.html">And more!</a></li>
     """  # noqa: E501
     },
     "3.9": {
         "reasons": """
                     <li><a href="https://github.com/jugmac00/python-version-cheat-sheet#python-310">use <code>match</code> statement and write union types as <code>X | Y</code></a></li>
-                    <li><a href="https://docs.python.org/3/whatsnew/3.10.html">And more!</a></li>
+                    <li><a href="https://docs.python.org/3/whatsnew/$template_next_version.html">And more!</a></li>
     """  # noqa: E501
     },
     "3.10": {
         "reasons": """
                     <li><a href="https://github.com/jugmac00/python-version-cheat-sheet#python-311"><code>tomllib</code> in the stdlib, exception groups and except*</a></li>
-                    <li><a href="https://docs.python.org/3/whatsnew/3.11.html">And more!</a></li>
+                    <li><a href="https://docs.python.org/3/whatsnew/$template_next_version.html">And more!</a></li>
     """  # noqa: E501
     },
 }
@@ -187,12 +187,14 @@ def main() -> None:
                 "template_minor": minor,
                 "template_next_minor": next_minor,
                 "template_next_version": next_version,
-                "template_reasons": substitutions.get("reasons", REASONS),
                 "template_remove_examples": substitutions.get("remove", ""),
                 "template_new_features": substitutions.get("new_features", ""),
             }
 
-            # Do the substitution
+            # Do the substitutions
+            d["template_reasons"] = Template(
+                substitutions.get("reasons", REASONS)
+            ).safe_substitute(d)
             result = src.safe_substitute(d)
 
             # EOL in the future?
