@@ -2,6 +2,7 @@
 """
 Unit tests for utils.py
 """
+
 import unittest
 
 import utils

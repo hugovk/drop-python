@@ -84,39 +84,29 @@ set([1, 2, 3])  # This can be replaced...
                     <li><a href="https://docs.python.org/3/whatsnew/3.6.html">f-strings in 3.6!</a></li>
     """,  # noqa: E501
     },
-    "3.6": {
-        "reasons": """
+    "3.6": {"reasons": """
                     <li><a href="https://github.com/jugmac00/python-version-cheat-sheet#python-37">Future typing</a></li>
                     <li><a href="https://github.com/jugmac00/python-version-cheat-sheet#python-37">Guaranteed dict sort order</a></li>
                     <li><a href="https://github.com/jugmac00/python-version-cheat-sheet#python-37"><pre>breakpoint()</pre></a></li>
                     <li><a href="https://github.com/jugmac00/python-version-cheat-sheet#python-37">Data classes</a></li>
                     <li><a href="https://docs.python.org/3/whatsnew/$template_next_version.html">And more!</a></li>
-    """  # noqa: E501
-    },
-    "3.7": {
-        "reasons": """
+    """},  # noqa: E501
+    "3.7": {"reasons": """
                     <li><a href="https://github.com/jugmac00/python-version-cheat-sheet#python-38"><strike>Walrus operator</strike></a></li>
                     <li><a href="https://docs.python.org/3/whatsnew/$template_next_version.html">And more!</a></li>
-    """  # noqa: E501
-    },
-    "3.8": {
-        "reasons": """
+    """},  # noqa: E501
+    "3.8": {"reasons": """
                     <li><a href="https://github.com/jugmac00/python-version-cheat-sheet#python-39">use <code>list</code> and <code>dict</code> for type annotations</a></li>
                     <li><a href="https://docs.python.org/3/whatsnew/$template_next_version.html">And more!</a></li>
-    """  # noqa: E501
-    },
-    "3.9": {
-        "reasons": """
+    """},  # noqa: E501
+    "3.9": {"reasons": """
                     <li><a href="https://github.com/jugmac00/python-version-cheat-sheet#python-310">use <code>match</code> statement and write union types as <code>X | Y</code></a></li>
                     <li><a href="https://docs.python.org/3/whatsnew/$template_next_version.html">And more!</a></li>
-    """  # noqa: E501
-    },
-    "3.10": {
-        "reasons": """
+    """},  # noqa: E501
+    "3.10": {"reasons": """
                     <li><a href="https://github.com/jugmac00/python-version-cheat-sheet#python-311"><code>tomllib</code> in the stdlib, exception groups and except*</a></li>
                     <li><a href="https://docs.python.org/3/whatsnew/$template_next_version.html">And more!</a></li>
-    """  # noqa: E501
-    },
+    """},  # noqa: E501
 }
 
 REASONS = """
