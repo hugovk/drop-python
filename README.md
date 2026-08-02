@@ -31,7 +31,7 @@ $ python3 generate.py -v 2.6
 ```
 See also `build.sh`.
 
-Gets list of packages from [Top PyPI Packages](https://hugovk.github.io/top-pypi-packages/).
+Gets list of packages from [Top PyPI Packages](https://hugovk.dev/top-pypi-packages/).
 
 ## How to test locally
 
