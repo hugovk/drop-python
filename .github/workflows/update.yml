@@ -64,3 +64,18 @@ jobs:
           git add .
           git commit -m "Deploy $rev"
           git push origin HEAD:gh-pages
+
+  keepalive:
+    # GitHub disables scheduled workflows after 60 days without commits.
+    # Re-enabling the workflow, even though it's already enabled, resets that.
+    needs: update
+    if: always() && github.event_name == 'schedule'
+    runs-on: ubuntu-slim
+    permissions:
+      actions: write # to re-enable this workflow
+    steps:
+      - name: Keep the schedule alive
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: gh workflow enable update.yml
