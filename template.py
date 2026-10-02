@@ -107,6 +107,11 @@ set([1, 2, 3])  # This can be replaced...
                     <li><a href="https://github.com/jugmac00/python-version-cheat-sheet#python-311"><code>tomllib</code> in the stdlib, exception groups and except*</a></li>
                     <li><a href="https://docs.python.org/3/whatsnew/$template_next_version.html">And more!</a></li>
     """},  # noqa: E501
+    "3.11": {"reasons": """
+                    <li><a href="https://nedbatchelder.com/text/which-py.html">10–60% faster than 3.10, tomllib</a></li>
+                    <li><a href="https://github.com/jugmac00/python-version-cheat-sheet#python-312">Python version cheat sheet</a></li>
+                    <li><a href="https://docs.python.org/3/whatsnew/$template_next_version.html">What's new in Python $template_next_version</a></li>
+    """},  # noqa: E501
 }
 
 REASONS = """
