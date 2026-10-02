@@ -1,7 +1,6 @@
 import datetime as dt
 import json
 import os
-from zoneinfo import ZoneInfo
 
 import requests_cache
 from packaging import specifiers
@@ -219,7 +218,7 @@ def remove_irrelevant_packages(packages, limit):
 
 
 def save_to_file(packages, file_name):
-    now = dt.datetime.utcnow().replace(tzinfo=ZoneInfo("UTC"))
+    now = dt.datetime.now(dt.UTC)
     with open(file_name, "w") as f:
         f.write(
             json.dumps(
