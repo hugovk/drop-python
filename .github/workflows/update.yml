@@ -1,0 +1,66 @@
+name: Update site
+
+on:
+  schedule:
+    # Daily, 04:07 UTC
+    - cron: "7 4 * * *"
+  workflow_dispatch:
+    inputs:
+      push:
+        description: "Deploy to gh-pages (untick for a dry run)"
+        type: boolean
+        default: true
+
+env:
+  FORCE_COLOR: 1
+  PIP_DISABLE_PIP_VERSION_CHECK: 1
+
+permissions: {}
+
+concurrency:
+  group: update-site
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # to push the build to gh-pages
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: true
+
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.x"
+          cache: pip
+          cache-dependency-path: requirements.txt
+
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 16
+
+      - name: Install dependencies
+        run: |
+          python -m pip install -r requirements.txt
+          npm install
+
+      - name: Build
+        run: ./build.sh
+
+      - name: Deploy to gh-pages
+        if: github.event_name == 'schedule' || inputs.push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rev=$(git rev-parse HEAD)
+          git fetch --depth=1 origin gh-pages
+          git worktree add --detach "$RUNNER_TEMP/gh-pages" origin/gh-pages
+          cd "$RUNNER_TEMP/gh-pages"
+          git rm -rfq .
+          git checkout origin/gh-pages -- .gitignore
+          cp -R "$GITHUB_WORKSPACE"/build/* .
+          git add .
+          git commit -m "Deploy $rev"
+          git push origin HEAD:gh-pages
