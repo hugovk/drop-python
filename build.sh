@@ -6,12 +6,6 @@ set -e
 # Info
 python3 --version
 
-# Install dependencies
-python3 -m pip install -r requirements.txt
-
-# Update
-git pull origin main
-
 # Fetch fresh copy of top packages
 wget https://hugovk.dev/top-pypi-packages/top-pypi-packages.min.json -O top-pypi-packages.json
 

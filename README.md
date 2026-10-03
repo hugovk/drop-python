@@ -44,7 +44,10 @@ Then visit http://localhost:8000/
 
 ## How to deploy
 
-Make sure we're on `main` and run `crontask.sh` daily from cron.
+[`update.yml`](.github/workflows/update.yml) runs on GitHub Actions daily. It runs `build.sh`
+and pushes the output to the `gh-pages` branch, which GitHub Pages serves. To rerun it, or for
+a dry run that doesn't deploy, use "Run workflow" on the
+[Actions tab](https://github.com/hugovk/drop-python/actions/workflows/update.yml).
 
 ## Thanks
 
