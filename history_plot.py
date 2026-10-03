@@ -18,6 +18,7 @@ import argparse
 import hashlib
 from pprint import pprint  # noqa: F401
 
+from natsort import natsorted  # pip install natsort
 from termcolor import colored  # pip install termcolor
 
 from history_get import load_jsonlines
@@ -40,17 +41,22 @@ def dopplr(name):
 def make_chart(dates, totals):
     # x: list of dates
     # y: totals for each version
+    import datetime as dt
+
+    import matplotlib.dates as mdates
     import matplotlib.pyplot as plt  # pip install matplotlib
     import matplotlib.ticker as plticker
 
     # "2020-01-26 22:35:22+02:00" -> "2020-01-26"
     dates = [date.split()[0] for date in dates]
+    # Real dates so matplotlib can place ticks sensibly
+    x = [dt.date.fromisoformat(date) for date in dates]
 
     fig, ax = plt.subplots()
 
     print("Plot...")
     eol = get_eols()
-    for version, v in totals.items():
+    for version, v in natsorted(totals.items()):
         print(version)
 
         if version in eol and eol[version] in dates:
@@ -60,14 +66,9 @@ def make_chart(dates, totals):
             totals[version][eol_pos] = 0
             # breakpoint()
 
-        ax.plot(dates, v, label=version, color=dopplr(version))
+        ax.plot(x, v, label=version, color=dopplr(version))
 
     ax.set_ylim(ymin=0, ymax=360)
-
-    plt.xticks(fontsize=8, rotation=90)
-
-    # Tweak spacing to prevent clipping of tick-labels
-    plt.subplots_adjust(bottom=0.2)
 
     # Shrink current axis by 20% so legend is outside chart
     box = ax.get_position()
@@ -79,9 +80,10 @@ def make_chart(dates, totals):
         bbox_to_anchor=(1, 0.5),
     )
 
-    # This locator puts ticks at regular intervals
-    loc = plticker.MultipleLocator(base=50)
-    ax.xaxis.set_major_locator(loc)
+    # One labelled tick per year, minor ticks per quarter
+    ax.xaxis.set_major_locator(mdates.YearLocator())
+    ax.xaxis.set_major_formatter(mdates.DateFormatter("%Y"))
+    ax.xaxis.set_minor_locator(mdates.MonthLocator(bymonth=(4, 7, 10)))
     loc = plticker.MultipleLocator(base=60)
     ax.yaxis.set_major_locator(loc)
 
