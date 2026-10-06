@@ -1,7 +1,7 @@
 gitpython
 jsonlines
 matplotlib
-natsorted
+natsort
 packaging
 requests-cache
 termcolor
